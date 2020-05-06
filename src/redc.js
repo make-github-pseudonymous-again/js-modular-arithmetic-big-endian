@@ -36,7 +36,7 @@ import {
 export default function _redc ( b , k , N , Ni , Nj , M , Mi , Mj , T , Ti , Tj ) {
 
 	if (Nj - Ni !== k) throw new Error('|N| !== k') ;
-	if (Mj - Mi !== k) throw new Error('|M| !== k') ;
+	if (Mj - Mi !== k) throw new Error('|M| !== k') ; // Can allow <= k here.
 	if (Tj - Ti !== 2*k+1) throw new Error('|T| !== 2*k+1') ;
 
 	// Reduce T mod R
@@ -49,7 +49,7 @@ export default function _redc ( b , k , N , Ni , Nj , M , Mi , Mj , T , Ti , Tj 
 	// m = ((T mod R) M) mod R
 	_mul(b, T , _Ti , Tj , M , Mi , Mj , m , 0 , mj) ;
 	// could be even more efficient here
-	// if we had a multiplication method that directly ignores higher order
+	// if we had a multiplication method that discards higher order
 	// bits
 
 	const mi = k ; // m = m mod R
