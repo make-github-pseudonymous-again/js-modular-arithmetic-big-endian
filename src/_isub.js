@@ -28,7 +28,7 @@ import {
  *               // to avoid side channel attacks
  *
  */
-export default function _iadd ( r , N , a , b ) {
+export default function ( r , N , a , b ) {
 
 	const k = N.length ;
 
