@@ -74,6 +74,6 @@ export default function _montgomery ( b , N ) {
 	const R3 = _alloc(k) ; // R^3 mod N on k words
 	_copy(_R3, k+1, 2*k+1, R3, 0) ;
 
-	return [ k , M , R , R2 , R3 ] ;
+	return { k , M , R , R2 , R3 } ;
 
 }
