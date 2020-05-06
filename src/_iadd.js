@@ -41,7 +41,7 @@ export default function ( r , N , a , b ) {
 	if (
 		// overflow ||
 		_cmp(a, 0, k, b, 0, b.length) < 0 ||
-		_cmp_n(a, 0, k, N, 0, k) >= 0 ||
+		_cmp_n(a, 0, k, N, 0) >= 0 ||
 	) {
 		_isub(a, 0, k, N, 0, k) ;
 		return true;
