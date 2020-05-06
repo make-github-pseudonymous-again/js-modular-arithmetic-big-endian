@@ -38,6 +38,7 @@ export default function _redc ( b , k , N , Ni , Nj , M , Mi , Mj , T , Ti , Tj 
 	if (Nj - Ni !== k) throw new Error('|N| !== k') ;
 	if (Mj - Mi !== k) throw new Error('|M| !== k') ; // Can allow <= k here.
 	if (Tj - Ti !== 2*k+1) throw new Error('|T| !== 2*k+1') ;
+	if (T[Ti] !== 0) throw new Error('T[Ti] !== 0') ;
 
 	// Reduce T mod R
 	const _Ti = Tj - k ;
