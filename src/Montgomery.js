@@ -1,6 +1,7 @@
 import {
 	_alloc,
 	_zeros,
+	_reset,
 	_copy,
 
 	_extended_euclidean_algorithm,
@@ -98,11 +99,41 @@ export default class Montgomery {
 	}
 
 	pow ( aRmodN , n ) {
-		// TODO
 		// Modular
 		// exponentiation can be done using exponentiation by squaring by initializing the
 		// initial product to the Montgomery representation of 1, that is, to R mod N, and
 		// by replacing the multiply and square steps by Montgomery multiplies.
+		const aRmodNpown = _alloc(this.k) ;
+
+		if ( x === 0 ) {
+			_copy(this.R, 0, this.k, aRmodNpown, 0) ;
+			return aRmodNpown ;
+		}
+
+		_copy( aRmodN, 0, this.k, aRmodNpown, 0 ) ;
+
+		if ( x === 1 ) return aRmodNpown ;
+
+		const xbits = [] ;
+
+		do { xbits.push(x & 1) ; x >>= 1 ; } while ( x !== 1 ) ;
+
+		const _2kp1 = 2*this.k+1 ;
+		const tmp = _alloc(_2kp1) ;
+
+		do {
+			_reset(tmp, 0, _2kp1);
+			_mul(this.b, this.N, this.M, aRmodNpown, aRmodNpown, tmp) ;
+			_copy(tmp, _2kp1 - k, _2kp1, aRmodNpown, 0) ;
+			if (xbits.pop() === 1) {
+				_reset(tmp, 0, _2kp1) ;
+				_mul(this.b, this.N, this.M, aRmodNpown, aRmodN, tmp) ;
+				_copy(tmp, _2kp1 - k, _2kp1, aRmodNpown, 0) ;
+			}
+		} while ( xbits.length ) ;
+
+		return aRmodNpown ;
+
 	}
 
 }
