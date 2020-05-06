@@ -35,7 +35,7 @@ export default function _montgomery ( b , N ) {
 
 	// Assert that GCD(R,N) is 1.
 	if ( GCD.length - GCDi !== 1 || GCD[GCDi] !== 1 )
-		throw new Error('Montgomery: GCD is not 1.') ;
+		throw new Error('Montgomery: GCD(R,N) is not 1.') ;
 
 	const M = _alloc(k) ; // M mod R on k words
 	_copy(_M,_M.length-k,_M.length, M, 0) ; // _M.length-k is always 1 ?
