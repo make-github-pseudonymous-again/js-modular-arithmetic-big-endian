@@ -18,6 +18,7 @@ import {
  * N has no leading zeroes
  * N has length k
  * |N| = |a| >= |b|
+ * |a| = |b| if you want to avoid side channel attacks
  * a < N
  * b < N
  *
