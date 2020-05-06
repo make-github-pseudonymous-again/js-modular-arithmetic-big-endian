@@ -13,6 +13,7 @@ import _redc from './redc' ;
  *
  * |N| >= |a| >= |b|
  * |c| = 2*|N| + 1
+ * c = 0000.0000 is zero initialized
  *
  */
 
