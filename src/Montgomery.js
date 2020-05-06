@@ -2,6 +2,8 @@ import {
 	_alloc,
 	_zeros,
 	_copy,
+
+	_extended_euclidean_algorithm,
 } from '@aureooms/js-integer-big-endian' ;
 
 import _mul from './_mul' ;
@@ -76,10 +78,23 @@ export default class Montgomery {
 	}
 
 	inv ( aRmodN ) {
-		// TODO
 		// The modular inverse
-		// Compute (aR mod N)^-1 using Euclidean algo ?
+		// Compute (aR mod N)^-1 using Euclidean algo
+		const ai = _trim_positive(aRmodN, 0, this.k);
+		const [ GCD , GCDi , _S , _Si , aRmodNi ] =
+			_extended_euclidean_algorithm ( this.b , this.N , 0 , this.k , aRmodN , ai , this.k ) ;
+
+		// Assert that GCD(N,aRmodN) is 1.
+		if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)
+			throw new Error('aRmodN has no inverse modulo N') ;
+
+		const _2kp1 = 2 * this.k + 1 ;
+		const red = _zeros(_2kp1) ; // TODO Use UintXArray ?
+
 		// a^-1 R mod N = REDC((aR mod N)^-1(R^3 mod N)).
+		_mul(this.b, this.N, this.M, this.R3, aRmodNi, red) ;
+
+		return modR(this.k, red) ;
 	}
 
 	pow ( aRmodN , n ) {
