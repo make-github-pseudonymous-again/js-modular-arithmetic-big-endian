@@ -70,9 +70,11 @@ export default function _redc ( b , k , N , Ni , Nj , M , Mi , Mj , T , Ti , Tj 
 	_reset(T, Ti, _Ti_1) ;
 
 	// if t ≥ N then
-	if (_cmp_n(T, _Ti_1, Tj, N, Ni) >= 0)
+	if (_cmp_n(T, _Ti_1, Tj, N, Ni) >= 0) {
 		_isub(b, T, _Ti_1, Tj, N, Ni) ; // return t − N
-
+		return true ;
+	}
+	else return false ;
 	// else return t
 
 }
