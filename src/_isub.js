@@ -2,7 +2,6 @@ import {
 	_iadd,
 	_isub,
 	_cmp,
-	_cmp_n,
 } from '@aureooms/js-integer-big-endian' ;
 
 /**
