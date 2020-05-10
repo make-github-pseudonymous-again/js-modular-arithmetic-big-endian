@@ -41,7 +41,7 @@ export default class Montgomery {
 		// aR mod N = REDC((a mod N)(R^2 mod N))
 		const _2kp1 = 2 * this.k + 1 ;
 		const red = _zeros(_2kp1) ; // TODO Use UintXArray ?
-		const amodN = modN(this.N, a) ;
+		const amodN = modN(this.N, x) ;
 		_mul(this.b, this.N, this.M, this.R2, amodN, red) ;
 		// TODO many unnecessary copies/alloc can be avoided by
 		// allowing array offsets in methods.
