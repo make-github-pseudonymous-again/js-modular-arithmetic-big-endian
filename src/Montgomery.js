@@ -28,6 +28,14 @@ export default class Montgomery {
 		// Use shared/pooled memory ?
 	}
 
+	one ( ) {
+		return this.R ;
+	}
+
+	zero ( ) {
+		return _zeros(this.k) ;
+	}
+
 	from ( x ) {
 		// Conversion into Montgomery form is done by computing .
 		// aR mod N = REDC((a mod N)(R^2 mod N))
