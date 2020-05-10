@@ -111,16 +111,13 @@ export default class Montgomery {
 		// exponentiation can be done using exponentiation by squaring by initializing the
 		// initial product to the Montgomery representation of 1, that is, to R mod N, and
 		// by replacing the multiply and square steps by Montgomery multiplies.
+		// TODO Handle arbitrary precision integer as exponent?
+
+		if ( x === 0 ) return this.R ;
+		if ( x === 1 ) return aRmodN ;
+
 		const aRmodNpown = _alloc(this.k) ;
-
-		if ( x === 0 ) {
-			_copy(this.R, 0, this.k, aRmodNpown, 0) ;
-			return aRmodNpown ;
-		}
-
 		_copy( aRmodN, 0, this.k, aRmodNpown, 0 ) ;
-
-		if ( x === 1 ) return aRmodNpown ;
 
 		const xbits = [] ;
 
