@@ -106,7 +106,7 @@ export default class Montgomery {
 		return modR(this.k, red) ;
 	}
 
-	pow ( aRmodN , n ) {
+	pow ( aRmodN , x ) {
 		// Modular
 		// exponentiation can be done using exponentiation by squaring by initializing the
 		// initial product to the Montgomery representation of 1, that is, to R mod N, and
