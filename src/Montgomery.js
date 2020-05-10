@@ -140,7 +140,7 @@ export default class Montgomery {
 			}
 		} while ( xbits.length ) ;
 
-		return aRmodNpown ;
+		return x >= 0 ? aRmodNpown : this.inv(aRmodNpown) ;
 
 	}
 
