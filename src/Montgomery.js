@@ -55,7 +55,7 @@ export default class Montgomery {
 		const _red = _zeros(_2kp1) ; // TODO Use UintXArray ?
 		_copy(aRmodN, 0, k, _red, _2kp1-k)
 		_redc(this.b, this.k, this.N, 0, this.k, this.M, 0, this.k, _red, 0, _2kp1) ;
-		const i = _trim_positive(_red, 0, _2kp1) ;
+		const i = _trim_positive(_red, this.k + 1, _2kp1) ;
 		const red = _alloc(_2kp1-i) ; // TODO Use UintXArray ?
 		_copy(_red, i, _2kp1, red, 0) ;
 		return red;
