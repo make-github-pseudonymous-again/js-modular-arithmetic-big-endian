@@ -10,7 +10,7 @@ import {
 import _mul from './_mul' ;
 import _iadd from './_iadd' ;
 import _isub from './_isub' ;
-import _redc from './redc' ;
+import _redc from './_redc' ;
 import modR from './modR' ;
 import modN from './modN' ;
 

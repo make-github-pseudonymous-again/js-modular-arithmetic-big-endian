@@ -1,6 +1,6 @@
 import { _mul } from '@aureooms/js-integer-big-endian' ;
 
-import _redc from './redc' ;
+import _redc from './_redc' ;
 
 //
 // mul by non montgomery ?
