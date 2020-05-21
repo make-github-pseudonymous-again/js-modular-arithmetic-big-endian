@@ -54,7 +54,10 @@
     "lib"
   ],
   "homepage": "https://aureooms.github.io/js-modular-arithmetic-big-endian",
-  "keywords": ["arithmetic", "modular"],
+  "keywords": [
+    "arithmetic",
+    "modular"
+  ],
   "license": "AGPL-3.0",
   "main": "lib/index.js",
   "repository": {
