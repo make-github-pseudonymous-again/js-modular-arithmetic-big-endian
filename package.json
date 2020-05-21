@@ -77,12 +77,8 @@
       "unicorn"
     ],
     "rules": {
-      "unicorn/filename-case": [
-        "error",
-        {
-          "case": "camelCase"
-        }
-      ]
+      "camelcase": "off",
+      "unicorn/filename-case": "off"
     }
   }
 }
