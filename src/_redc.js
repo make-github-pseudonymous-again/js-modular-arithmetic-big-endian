@@ -62,7 +62,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 
 	// T = T / R
 	_copy(T, Ti + 1, _Ti, T, _Ti);
-	// assert T[Ti] === 0
+	// Assert T[Ti] === 0
 	const _Ti_1 = _Ti;
 	// T[_Ti_1] = T[Ti];
 	_reset(T, Ti, _Ti_1);
