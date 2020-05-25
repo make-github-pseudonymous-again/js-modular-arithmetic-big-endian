@@ -11,7 +11,7 @@
       "@babel/polyfill",
       "@babel/register"
     ],
-    "timeout": "1m"
+    "timeout": "5m"
   },
   "babel": {
     "presets": [
