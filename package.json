@@ -76,7 +76,8 @@
     "prettier": true,
     "ignore": [
       "lib",
-      "doc"
+      "doc",
+      "test/src/generated"
     ],
     "plugins": [
       "unicorn"
