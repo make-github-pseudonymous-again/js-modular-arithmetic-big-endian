@@ -59,18 +59,19 @@ def inv ( N , x ) :
 
     [ a , b ] = deque(_extended_euclidean_algorithm(N, x), 2)
     gcd = a[0]
-    assert(gcd == 1)
+    if gcd != 1:
+        raise Exception('{} has no inverse mod {}'.format(x,N))
     assert(b[0] == 0)
     assert(N*a[1] + x*a[2] == 1)
     assert(N*b[1] + x*b[2] == 0)
 
-    _inv = a[2] if a[2] > 0 else (-a[2] % N)
+    _inv = a[2] % N
     assert((x*_inv) % N == 1)
     return _inv
 
 def mpow ( N , a , b ) :
     assert(0 <= a < N)
-    if b < 0 : return inv(mpow(N, a, -b))
+    if b < 0 : return inv(N, mpow(N, a, -b))
     if b == 0: return 1
     if b == 1: return a
 
@@ -111,11 +112,13 @@ def write ( f , display_base , representation_base , modulos , numbers , name , 
     const mont = new Montgomery(REPRESENTATION_BASE, n);
 
     const a = parse(DISPLAY_BASE, REPRESENTATION_BASE, A);
+    const nonneg = B[0] !== '-' ;
+    if (!nonneg) B = B.slice(1);
     const b = parse(DISPLAY_BASE, REPRESENTATION_BASE, B);
 
     const _a = mont.from(a);
 
-    const _c = mont.{}(_a, b);
+    const _c = mont.{}(_a, b, nonneg);
     const a_ = mont.out(_a);
     const c = mont.out(_c);
 
@@ -128,23 +131,50 @@ def write ( f , display_base , representation_base , modulos , numbers , name , 
     t.is(expected, C);
 }}\n\n""".format( name ) )
 
+        f.write("""function throws(t, N, A, B, expected) {{
+    const n = parse(DISPLAY_BASE, REPRESENTATION_BASE, N);
+    const mont = new Montgomery(REPRESENTATION_BASE, n);
+
+    const a = parse(DISPLAY_BASE, REPRESENTATION_BASE, A);
+    const nonneg = B[0] !== '-' ;
+    if (!nonneg) B = B.slice(1);
+    const b = parse(DISPLAY_BASE, REPRESENTATION_BASE, B);
+
+    const _a = mont.from(a);
+
+    t.throws(() => mont.{}(_a, b, nonneg), expected);
+    const a_ = mont.out(_a);
+
+    const A_ = stringify(REPRESENTATION_BASE, DISPLAY_BASE, a_, 0, a_.length);
+    const B_ = stringify(REPRESENTATION_BASE, DISPLAY_BASE, b, 0, b.length);
+
+    t.is(A, A_);
+    t.is(B, B_);
+}}\n\n""".format( name ) )
+
 
     f.write("macro.title = ( _ , N , A , B , expected ) => `{}(${{fmt(A)}},${{fmt(B)}}) = ${{fmt(expected)}} mod ${{fmt(N)}}` ;\n\n".format(name))
+    f.write("throws.title = ( _ , N , A , B ) => `{}(${{fmt(A)}},${{fmt(B)}}) mod ${{fmt(N)}} is not defined (${{fmt(A)}} has no inverse)` ;\n\n".format(name))
 
     if isn:
         LINE = "test(macro, '{}', '{}', {}, '{}');\n"
+        THROWLINE = "test(throws, '{}', '{}', {}, {{message: /no inverse/}});\n"
     else:
         LINE = "test(macro, '{}', '{}', '{}', '{}');\n"
+        THROWLINE = "test(throws, '{}', '{}', '{}', {{message: /no inverse/}});\n"
 
     done = set()
 
-    def line ( LINE , N , x , y ) :
-        c = t( N , x , y )
+    def line ( N , x , y ) :
         if not isn or MIN_NUMBER <= y <= MAX_NUMBER:
             key = (isn, N, x, y)
             if key not in done:
                 done.add(key)
-                f.write(LINE.format(N,x,y,*c))
+                try:
+                    c = t( N , x , y )
+                    f.write(LINE.format(N,x,y,*c))
+                except:
+                    f.write(THROWLINE.format(N,x,y))
 
     for N in modulos :
         if gcd(representation_base, N) != 1:
@@ -161,10 +191,14 @@ def write ( f , display_base , representation_base , modulos , numbers , name , 
 
             for b in numbers :
 
-                line(LINE, N, a%N, b%N)
-                line(LINE, N, -a%N, b%N)
-                line(LINE, N, a%N, -b%N)
-                line(LINE, N, -a%N, -b%N)
+                line(N, a%N, b%N)
+                line(N, -a%N, b%N)
+                line(N, a%N, -b%N)
+                line(N, -a%N, -b%N)
+                line(N, a%N, b)
+                line(N, -a%N, b)
+                line(N, a%N, -b)
+                line(N, -a%N, -b)
 
 root = 'test/src/generated/montgomery/arithmetic'
 os.makedirs(root, exist_ok=True)
