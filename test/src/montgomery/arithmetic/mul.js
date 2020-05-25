@@ -2,7 +2,7 @@ import test from 'ava';
 
 import {parse, stringify} from '@aureooms/js-integer-big-endian';
 
-import {Montgomery} from '../../src';
+import {Montgomery} from '../../../../src';
 
 const REPRESENTATION_BASE = 10;
 const DISPLAY_BASE = 10;
