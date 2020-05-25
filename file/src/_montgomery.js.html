@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/_montgomery.js | @aureooms/js-modular-arithmetic-big-endian</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-style.css"><script src="./inject/script/0-header.js"></script><meta name="description" content="Modular arithmetic for JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@aureooms/js-modular-arithmetic-big-endian"><meta property="twitter:description" content="Modular arithmetic for JavaScript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/aureooms/js-modular-arithmetic-big-endian"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Montgomery.js~Montgomery.html">Montgomery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_iadd">_iadd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_isub">_isub</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_montgomery">_montgomery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_mul">_mul</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-_redc">_redc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modN">modN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-modR">modR</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/_montgomery.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+	_alloc,
+	_zeros,
+	_copy,
+	_mul,
+	_idivmod,
+	_sub,
+	_extended_euclidean_algorithm
+} from &apos;@aureooms/js-integer-big-endian&apos;;
+
+import _redc from &apos;./_redc&apos;;
+
+/**
+ *
+ * N has no leading zeroes
+ *
+ * @param {Number} b the radix
+ * @param {Array} N number array of length k.
+ *
+ *
+ *
+ *
+ */
+export default function _montgomery(b, N) {
+	const k = N.length;
+
+	const _2kp1 = 2 * k + 1;
+	const _R = _zeros(_2kp1);
+	_R[k] = 1; // B^k
+
+	const [
+		GCD,
+		GCDi,
+		// eslint-disable-next-line no-unused-vars
+		_S,
+		// eslint-disable-next-line no-unused-vars
+		_Si,
+		_M,
+		// eslint-disable-next-line no-unused-vars
+		_1,
+		// eslint-disable-next-line no-unused-vars
+		_2,
+		// eslint-disable-next-line no-unused-vars
+		_3,
+		// eslint-disable-next-line no-unused-vars
+		_4,
+		// eslint-disable-next-line no-unused-vars
+		_5,
+		steps
+	] = _extended_euclidean_algorithm(b, _R, k, _2kp1, N, 0, k);
+
+	// Assert that GCD(R,N) is 1.
+	if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)
+		throw new Error(&apos;Montgomery: GCD(R,N) is not 1.&apos;);
+
+	const M = _alloc(k); // M mod R on k words
+	if (steps % 2 === 0) {
+		// We use _R[0:k] because it is filled with zeros.
+		_sub(b, _R, 0, k, _M, _M.length - k, _M.length, M, 0, k); // _M.length-k is always 1 ?
+	} else {
+		_copy(_M, _M.length - k, _M.length, M, 0); // _M.length-k is always 1 ?
+	}
+
+	// R^2 mod N
+	const _R2 = _zeros(_2kp1);
+	_R2[0] = 1;
+	_idivmod(b, _R2, 0, _2kp1, N, 0, k, _R, 0, _2kp1); // Use mod only function once implemented
+	const R2 = _alloc(k); // R^2 mod N on k words
+	_copy(_R2, k + 1, _2kp1, R2, 0);
+
+	// Avoid using division for the computation of the other constants.
+	// From Wikipedia:
+	// Performing these operations requires knowing at least N&#x2032; and R2 mod N.
+	// When R is a power of a small positive integer b, N&#x2032; can be computed by
+	// Hensel&apos;s lemma: The inverse of N modulo b is computed by a naive
+	// algorithm (for instance, if b = 2 then the inverse is 1), and Hensel&apos;s
+	// lemma is used repeatedly to find the inverse modulo higher and higher
+	// powers of b, stopping when the inverse modulo R is known; N&#x2032; is the
+	// negation of this inverse. The constants R mod N and R3 mod N can be
+	// generated as REDC(R2 mod N) and as REDC((R2 mod N)(R2 mod N)). The
+	// fundamental operation is to compute REDC of a product. When standalone
+	// REDC is needed, it can be computed as REDC of a product with 1 mod N. The
+	// only place where a direct reduction modulo N is necessary is in the
+	// precomputation of R2 mod N.
+
+	// R mod N = REDC(R^2 mod N)
+	_redc(b, k, N, 0, k, M, 0, k, _R2, 0, _2kp1);
+	const R = _alloc(k); // R mod N on k words
+	_copy(_R2, k + 1, _2kp1, R, 0);
+
+	// R^3 mod N = REDC((R^2 mod N)(R^2 mod N))
+	const _R3 = _zeros(_2kp1);
+	_mul(b, R2, 0, k, R2, 0, k, _R3, 1, _2kp1);
+	_redc(b, k, N, 0, k, M, 0, k, _R3, 0, _2kp1);
+	const R3 = _alloc(k); // R^3 mod N on k words
+	_copy(_R3, k + 1, _2kp1, R3, 0);
+
+	// Console.debug({b, N, k, M, R, R2, R3});
+	return {k, M, R, R2, R3};
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

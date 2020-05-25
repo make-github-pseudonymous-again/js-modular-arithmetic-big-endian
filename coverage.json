@@ -1,0 +1,70 @@
+{
+  "coverage": "22.22%",
+  "expectCount": 27,
+  "actualCount": 6,
+  "files": {
+    "src/Montgomery.js": {
+      "expectCount": 20,
+      "actualCount": 0,
+      "undocumentLines": [
+        21,
+        22,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        34,
+        38,
+        42,
+        54,
+        67,
+        76,
+        83,
+        90,
+        144,
+        167,
+        190
+      ]
+    },
+    "src/_iadd.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/_isub.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/_montgomery.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/_mul.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/_redc.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/modN.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/modR.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}
