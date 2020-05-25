@@ -24,7 +24,8 @@ import _redc from './_redc';
 export default function _montgomery(b, N) {
 	const k = N.length;
 
-	const _R = _zeros(2 * k + 1);
+	const _2kp1 = 2 * k + 1;
+	const _R = _zeros(_2kp1);
 	_R[k] = 1; // B^k
 
 	const [
@@ -46,7 +47,7 @@ export default function _montgomery(b, N) {
 		// eslint-disable-next-line no-unused-vars
 		_5,
 		steps
-	] = _extended_euclidean_algorithm(b, _R, k, 2 * k + 1, N, 0, k);
+	] = _extended_euclidean_algorithm(b, _R, k, _2kp1, N, 0, k);
 
 	// Assert that GCD(R,N) is 1.
 	if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)
@@ -61,11 +62,11 @@ export default function _montgomery(b, N) {
 	}
 
 	// R^2 mod N
-	const _R2 = _zeros(2 * k + 1);
+	const _R2 = _zeros(_2kp1);
 	_R2[0] = 1;
-	_idivmod(b, _R2, 0, 2 * k + 1, N, 0, k, _R, 0, 2 * k + 1); // Use mod only function once implemented
+	_idivmod(b, _R2, 0, _2kp1, N, 0, k, _R, 0, _2kp1); // Use mod only function once implemented
 	const R2 = _alloc(k); // R^2 mod N on k words
-	_copy(_R2, k + 1, 2 * k + 1, R2, 0);
+	_copy(_R2, k + 1, _2kp1, R2, 0);
 
 	// Avoid using division for the computation of the other constants.
 	// From Wikipedia:
@@ -83,16 +84,16 @@ export default function _montgomery(b, N) {
 	// precomputation of R2 mod N.
 
 	// R mod N = REDC(R^2 mod N)
-	_redc(b, k, N, 0, k, M, 0, k, _R2, 0, 2 * k + 1);
+	_redc(b, k, N, 0, k, M, 0, k, _R2, 0, _2kp1);
 	const R = _alloc(k); // R mod N on k words
-	_copy(_R2, k + 1, 2 * k + 1, R, 0);
+	_copy(_R2, k + 1, _2kp1, R, 0);
 
 	// R^3 mod N = REDC((R^2 mod N)(R^2 mod N))
-	const _R3 = _zeros(2 * k + 1);
-	_mul(b, R2, 0, k, R2, 0, k, _R3, 1, 2 * k + 1);
-	_redc(b, k, N, 0, k, M, 0, k, _R3, 0, 2 * k + 1);
+	const _R3 = _zeros(_2kp1);
+	_mul(b, R2, 0, k, R2, 0, k, _R3, 1, _2kp1);
+	_redc(b, k, N, 0, k, M, 0, k, _R3, 0, _2kp1);
 	const R3 = _alloc(k); // R^3 mod N on k words
-	_copy(_R3, k + 1, 2 * k + 1, R3, 0);
+	_copy(_R3, k + 1, _2kp1, R3, 0);
 
 	// Console.debug({b, N, k, M, R, R2, R3});
 	return {k, M, R, R2, R3};
