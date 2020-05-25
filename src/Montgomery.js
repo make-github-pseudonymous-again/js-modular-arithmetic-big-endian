@@ -3,8 +3,10 @@ import {
 	_zeros,
 	_reset,
 	_copy,
+	jz,
 	_extended_euclidean_algorithm,
-	_trim_positive
+	_trim_positive,
+	convert
 } from '@aureooms/js-integer-big-endian';
 
 import _mul from './_mul';
@@ -113,18 +115,18 @@ export default class Montgomery {
 		return modR(this.k, red);
 	}
 
-	pow(aRmodN, x) {
+	pown(aRmodN, x) {
 		// Modular
 		// exponentiation can be done using exponentiation by squaring by initializing the
 		// initial product to the Montgomery representation of 1, that is, to R mod N, and
 		// by replacing the multiply and square steps by Montgomery multiplies.
-		// TODO Handle arbitrary precision integer as exponent?
+
+		const nonneg = x >= 0;
+
+		if (!nonneg) x = -x;
 
 		if (x === 0) return this.R;
 		if (x === 1) return aRmodN;
-
-		const aRmodNpown = _alloc(this.k);
-		_copy(aRmodN, 0, this.k, aRmodNpown, 0);
 
 		const xbits = [];
 
@@ -132,6 +134,15 @@ export default class Montgomery {
 			xbits.push(x & 1);
 			x >>= 1;
 		} while (x !== 1);
+
+		return this._powb(aRmodN, xbits, nonneg);
+	}
+
+	_powb(aRmodN, xbits, nonneg) {
+		// The binary expansion of the exponent is 1 concatenanted with xbits
+		// reversed. Must have xbits.length >= 1.
+		const aRmodNpown = _alloc(this.k);
+		_copy(aRmodN, 0, this.k, aRmodNpown, 0);
 
 		const _2kp1 = 2 * this.k + 1;
 		const temporary = _alloc(_2kp1);
@@ -147,6 +158,21 @@ export default class Montgomery {
 			}
 		} while (xbits.length);
 
-		return x >= 0 ? aRmodNpown : this.inv(aRmodNpown);
+		return nonneg ? aRmodNpown : this.inv(aRmodNpown);
+	}
+
+	pow(aRmodN, b, nonneg = true) {
+		if (jz(b, 0, b.length - 1)) {
+			// B consists of a single limb
+			if (b[b.length - 1] === 0) return this.R;
+			if (b[b.length - 1] === 1) return aRmodN;
+			return this.pown(aRmodN, nonneg ? b[b.length - 1] : -b[b.length - 1]);
+		}
+
+		const xbits = convert(this.b, 2, b, 0, b.length);
+		xbits.reverse();
+		xbits.pop();
+
+		return this._powb(aRmodN, xbits, nonneg);
 	}
 }

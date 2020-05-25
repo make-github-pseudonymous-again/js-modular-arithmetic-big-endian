@@ -1,6 +1,7 @@
 import os
 from math import ceil
 from math import sqrt
+from collections import deque
 
 MAX_NUMBER = 2**53 - 1
 MIN_NUMBER = -2**53
@@ -30,29 +31,55 @@ modulos = sorted([2, 3, 19, p25519])
 smallnumbers = sorted([ 1 , 3 , 7 , 9 , 11 , 17 , 22 , 24 , 27 , 29 , 1234 , 5678 ])
 
 arithmetic = {
-    'add' : {
+    'pow' : {
         'modulos' : modulos ,
         'numbers' : smallnumbers + hugenumbers ,
-        'apply' : lambda N,a,b: ((a+b) % N,) ,
-        'str' : '+'
-    } ,
-    'sub' : {
-        'modulos' : modulos ,
-        'numbers' : smallnumbers + hugenumbers ,
-        'apply' : lambda N,a,b: ((a-b) % N,) ,
-        'str' : '-'
-    } ,
-    'mul' : {
-        'modulos' : modulos ,
-        'numbers' : smallnumbers + hugenumbers ,
-        'apply' : lambda N,a,b: ((a*b) % N,) ,
-        'str' : '*'
+        'apply' : lambda N,a,b: (mpow(N, a, b),) ,
+        'str' : '^'
     } ,
 }
 
 def gcd ( a , b ) :
     while b != 0 : a , b = b , a % b
     return a
+
+def _extended_euclidean_algorithm ( a , b , sa = 1 , ta = 0 , sb = 0 , tb = 1 ) :
+
+    yield (a, sa, ta)
+    if b == 0:
+        yield (b, sb, tb)
+
+    else:
+        q, _a = a // b, a % b
+        _sa = sa - q * sb
+        _ta = ta - q * tb
+        yield from _extended_euclidean_algorithm( b, _a, sb, tb, _sa, _ta)
+
+def inv ( N , x ) :
+
+    [ a , b ] = deque(_extended_euclidean_algorithm(N, x), 2)
+    gcd = a[0]
+    assert(gcd == 1)
+    assert(b[0] == 0)
+    assert(N*a[1] + x*a[2] == 1)
+    assert(N*b[1] + x*b[2] == 0)
+
+    _inv = a[2] if a[2] > 0 else (-a[2] % N)
+    assert((x*_inv) % N == 1)
+    return _inv
+
+def mpow ( N , a , b ) :
+    assert(0 <= a < N)
+    if b < 0 : return inv(mpow(N, a, -b))
+    if b == 0: return 1
+    if b == 1: return a
+
+    r = b & 1
+    s = b >> 1
+    if r == 0:
+        return mpow( N, (a**2)%N, s)
+    else:
+        return (mpow( N, (a**2)%N, s)*a)%N
 
 def gen_digits ( base , x ) :
     while x != 0:
@@ -87,15 +114,13 @@ def write ( f , display_base , representation_base , modulos , numbers , name , 
     const b = parse(DISPLAY_BASE, REPRESENTATION_BASE, B);
 
     const _a = mont.from(a);
-    const _b = mont.from(b);
 
-    const _c = mont.{}(_a, _b);
+    const _c = mont.{}(_a, b);
     const a_ = mont.out(_a);
-    const b_ = mont.out(_b);
     const c = mont.out(_c);
 
     const A_ = stringify(REPRESENTATION_BASE, DISPLAY_BASE, a_, 0, a_.length);
-    const B_ = stringify(REPRESENTATION_BASE, DISPLAY_BASE, b_, 0, b_.length);
+    const B_ = stringify(REPRESENTATION_BASE, DISPLAY_BASE, b, 0, b.length);
     const C = stringify(REPRESENTATION_BASE, DISPLAY_BASE, c, 0, c.length);
 
     t.is(A, A_);
