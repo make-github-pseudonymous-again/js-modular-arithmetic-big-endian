@@ -6,6 +6,7 @@ import {
 	jz,
 	_extended_euclidean_algorithm,
 	_trim_positive,
+	_sub,
 	convert
 } from '@aureooms/js-integer-big-endian';
 
@@ -91,8 +92,26 @@ export default class Montgomery {
 		// Compute (aR mod N)^-1 using Euclidean algo
 		const ai = _trim_positive(aRmodN, 0, this.k);
 
-		// eslint-disable-next-line no-unused-vars
-		const [GCD, GCDi, _S, _Si, aRmodNi] = _extended_euclidean_algorithm(
+		let [
+			GCD,
+			GCDi,
+			// eslint-disable-next-line no-unused-vars
+			_S,
+			// eslint-disable-next-line no-unused-vars
+			_Si,
+			aRmodNi,
+			// eslint-disable-next-line no-unused-vars
+			_1,
+			// eslint-disable-next-line no-unused-vars
+			_2,
+			// eslint-disable-next-line no-unused-vars
+			_3,
+			// eslint-disable-next-line no-unused-vars
+			_4,
+			// eslint-disable-next-line no-unused-vars
+			_5,
+			steps
+		] = _extended_euclidean_algorithm(
 			this.b,
 			this.N,
 			0,
@@ -109,7 +128,14 @@ export default class Montgomery {
 		const _2kp1 = 2 * this.k + 1;
 		const red = _zeros(_2kp1); // TODO Use UintXArray ?
 
-		// a^-1 R mod N = REDC((aR mod N)^-1(R^3 mod N)).
+		if (steps % 2 === 1) {
+			// We compute N - aRmodNi
+			const temporary = _zeros(this.k);
+			_sub(this.b, this.N, 0, this.k, aRmodNi, 0, this.k, temporary, 0, this.k);
+			aRmodNi = temporary;
+		}
+
+		// A^-1 R mod N = REDC((aR mod N)^-1(R^3 mod N)).
 		_mul(this.b, this.N, this.M, this.R3, aRmodNi, red);
 
 		return modR(this.k, red);
@@ -126,7 +152,7 @@ export default class Montgomery {
 		if (!nonneg) x = -x;
 
 		if (x === 0) return this.R;
-		if (x === 1) return aRmodN;
+		if (x === 1) return nonneg ? aRmodN : this.inv(aRmodN);
 
 		const xbits = [];
 
@@ -164,8 +190,6 @@ export default class Montgomery {
 	pow(aRmodN, b, nonneg = true) {
 		if (jz(b, 0, b.length - 1)) {
 			// B consists of a single limb
-			if (b[b.length - 1] === 0) return this.R;
-			if (b[b.length - 1] === 1) return aRmodN;
 			return this.pown(aRmodN, nonneg ? b[b.length - 1] : -b[b.length - 1]);
 		}
 
