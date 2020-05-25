@@ -4,6 +4,7 @@ import {
 	_copy,
 	_mul,
 	_idivmod,
+	_sub,
 	_extended_euclidean_algorithm
 } from '@aureooms/js-integer-big-endian';
 
@@ -27,7 +28,7 @@ export default function _montgomery(b, N) {
 	_R[k] = 1; // B^k
 
 	// eslint-disable-next-line no-unused-vars
-	const [GCD, GCDi, _S, _Si, _M] = _extended_euclidean_algorithm(
+	const [GCD, GCDi, _S, _Si, _M, _1, _2, _3, _4, _5, steps] = _extended_euclidean_algorithm(
 		b,
 		_R,
 		k,
@@ -42,7 +43,13 @@ export default function _montgomery(b, N) {
 		throw new Error('Montgomery: GCD(R,N) is not 1.');
 
 	const M = _alloc(k); // M mod R on k words
-	_copy(_M, _M.length - k, _M.length, M, 0); // _M.length-k is always 1 ?
+	if (steps % 2 === 0) {
+		// we use _R[0:k] because it is filled with zeros.
+		_sub(b, _R, 0, k, _M, _M.length - k, _M.length, M, 0, k); // _M.length-k is always 1 ?
+	}
+	else {
+		_copy(_M, _M.length - k, _M.length, M, 0); // _M.length-k is always 1 ?
+	}
 
 	// R^2 mod N
 	const _R2 = _zeros(2 * k + 1);
