@@ -68,7 +68,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 
 	// If t ≥ N then
 	if (_cmp_n(T, _Ti_1, Tj, N, Ni) >= 0) {
-		_isub(b, T, _Ti_1, Tj, N, Ni); // Return t − N
+		_isub(b, T, _Ti_1, Tj, N, Ni, Nj); // Return t − N
 		return true;
 	}
 

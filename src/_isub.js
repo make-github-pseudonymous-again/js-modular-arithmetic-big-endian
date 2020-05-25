@@ -34,7 +34,7 @@ export default function (r, N, a, b) {
 	// TODO  Use underflow bit.
 	// const underflow = _isub(r, a, 0, k, b, 0, b.length) ;
 	if (underflow) {
-		_iadd(a, 0, k, N, 0, k);
+		_iadd(r, a, 0, k, N, 0, k); // exploits wrapping
 		return true;
 	}
 
