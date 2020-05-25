@@ -38,7 +38,7 @@ export default function (r, N, a, b) {
 		_cmp(a, 0, k, b, 0, b.length) < 0 ||
 		_cmp_n(a, 0, k, N, 0) >= 0
 	) {
-		_isub(r, a, 0, k, N, 0, k); // exploits wrapping
+		_isub(r, a, 0, k, N, 0, k); // Exploits wrapping
 		return true;
 	}
 

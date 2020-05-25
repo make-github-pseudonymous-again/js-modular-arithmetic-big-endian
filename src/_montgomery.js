@@ -27,16 +27,26 @@ export default function _montgomery(b, N) {
 	const _R = _zeros(2 * k + 1);
 	_R[k] = 1; // B^k
 
-	// eslint-disable-next-line no-unused-vars
-	const [GCD, GCDi, _S, _Si, _M, _1, _2, _3, _4, _5, steps] = _extended_euclidean_algorithm(
-		b,
-		_R,
-		k,
-		2 * k + 1,
-		N,
-		0,
-		k
-	);
+	const [
+		GCD,
+		GCDi,
+		// eslint-disable-next-line no-unused-vars
+		_S,
+		// eslint-disable-next-line no-unused-vars
+		_Si,
+		_M,
+		// eslint-disable-next-line no-unused-vars
+		_1,
+		// eslint-disable-next-line no-unused-vars
+		_2,
+		// eslint-disable-next-line no-unused-vars
+		_3,
+		// eslint-disable-next-line no-unused-vars
+		_4,
+		// eslint-disable-next-line no-unused-vars
+		_5,
+		steps
+	] = _extended_euclidean_algorithm(b, _R, k, 2 * k + 1, N, 0, k);
 
 	// Assert that GCD(R,N) is 1.
 	if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)
@@ -44,10 +54,9 @@ export default function _montgomery(b, N) {
 
 	const M = _alloc(k); // M mod R on k words
 	if (steps % 2 === 0) {
-		// we use _R[0:k] because it is filled with zeros.
+		// We use _R[0:k] because it is filled with zeros.
 		_sub(b, _R, 0, k, _M, _M.length - k, _M.length, M, 0, k); // _M.length-k is always 1 ?
-	}
-	else {
+	} else {
 		_copy(_M, _M.length - k, _M.length, M, 0); // _M.length-k is always 1 ?
 	}
 
