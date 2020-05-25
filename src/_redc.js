@@ -61,6 +61,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 	_iadd(b, T, Ti, Tj, X, 0, Xj);
 
 	// T = T / R
+	if (T[Ti] !== 0) throw new Error('T[Ti] !== 0');
 	_copy(T, Ti + 1, _Ti, T, _Ti);
 	// Assert T[Ti] === 0
 	const _Ti_1 = _Ti;
