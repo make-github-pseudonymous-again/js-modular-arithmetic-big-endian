@@ -34,22 +34,22 @@
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.0",
+    "@babel/core": "7.9.6",
     "@babel/plugin-proposal-async-generator-functions": "7.8.3",
     "@babel/polyfill": "7.8.7",
-    "@babel/preset-env": "7.9.5",
+    "@babel/preset-env": "7.9.6",
     "@babel/register": "7.9.0",
-    "ava": "3.7.0",
-    "coveralls": "3.0.11",
+    "ava": "3.8.2",
+    "coveralls": "3.1.0",
     "esdoc": "1.1.0",
     "esdoc-ecmascript-proposal-plugin": "1.0.0",
     "esdoc-inject-script-plugin": "1.0.0",
     "esdoc-inject-style-plugin": "1.0.0",
     "esdoc-standard-plugin": "1.0.0",
-    "np": "6.2.1",
+    "np": "6.2.3",
     "nyc": "15.0.1",
     "tap-dot": "^2.0.0",
-    "xo": "0.29.1"
+    "xo": "0.30.0"
   },
   "files": [
     "lib"
