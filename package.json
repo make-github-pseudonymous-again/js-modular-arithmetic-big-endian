@@ -48,6 +48,7 @@
     "esdoc-standard-plugin": "1.0.0",
     "np": "6.2.1",
     "nyc": "15.0.1",
+    "tap-dot": "^2.0.0",
     "xo": "0.29.1"
   },
   "files": [
@@ -66,7 +67,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && babel src -d lib",
-    "cover": "nyc --reporter=lcov npm test",
+    "cover": "nyc --reporter=lcov npm test -- --tap | tap-dot",
     "esdoc": "esdoc",
     "prepare": "npm run build",
     "release": "np",
