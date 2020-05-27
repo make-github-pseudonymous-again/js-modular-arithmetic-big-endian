@@ -4,9 +4,6 @@
 Modular arithmetic for JavaScript.
 See [docs](https://aureooms.github.io/js-modular-arithmetic-big-endian/index.html).
 
-> :warning: The code needs a ES2015+ polyfill to run (`regeneratorRuntime`),
-> for instance [@babel/polyfill](https://babeljs.io/docs/usage/polyfill).
-
 ```js
 import { Montgomery } from '@aureooms/js-modular-arithmetic-big-endian' ; 
 const int = s => s.split('').map(x => +x) ;

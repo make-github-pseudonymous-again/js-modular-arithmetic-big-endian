@@ -1,18 +1,8 @@
 # Usage
 
-> :warning: The code needs a ES2015+ polyfill to run (`regeneratorRuntime`),
-> for instance [@babel/polyfill](https://babeljs.io/docs/usage/polyfill).
-
-First, require the polyfill at the entry point of your application
+Import the library where needed
 ```js
-require( '@babel/polyfill' ) ;
+const { Montgomery } = require( '@aureooms/js-modular-arithmetic-big-endian' ) ;
 // or
-import '@babel/polyfill' ;
-```
-
-Then, import the library where needed
-```js
-const modulararithmeticbigendian = require( '@aureooms/js-modular-arithmetic-big-endian' ) ;
-// or
-import * as modulararithmeticbigendian from '@aureooms/js-modular-arithmetic-big-endian' ;
+import { Montgomery } from '@aureooms/js-modular-arithmetic-big-endian' ;
 ```
