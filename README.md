@@ -4,6 +4,8 @@
 Modular arithmetic for JavaScript.
 See [docs](https://aureooms.github.io/js-modular-arithmetic-big-endian/index.html).
 
+> [Try it on RunKit](https://runkit.com/aureooms/js-modular-arithmetic-big-endian)!
+
 ```js
 import { Montgomery } from '@aureooms/js-modular-arithmetic-big-endian' ; 
 const int = s => s.split('').map(x => +x) ;
