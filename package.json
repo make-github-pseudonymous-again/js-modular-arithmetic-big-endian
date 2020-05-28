@@ -10,7 +10,8 @@
     "require": [
       "@babel/register"
     ],
-    "timeout": "5m"
+    "timeout": "5m",
+    "concurrency": 4
   },
   "babel": {
     "presets": [
