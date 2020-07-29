@@ -18,7 +18,56 @@
       "@babel/preset-env"
     ],
     "env": {
+      "test": {
+        "presets": [
+          "babel-preset-power-assert"
+        ],
+        "plugins": [
+          [
+            "transform-remove-console",
+            {
+              "exclude": [
+                "log",
+                "error",
+                "warn"
+              ]
+            }
+          ]
+        ],
+        "sourceMaps": "inline"
+      },
       "development": {
+        "presets": [
+          "babel-preset-power-assert"
+        ],
+        "plugins": [
+          [
+            "transform-remove-console",
+            {
+              "exclude": [
+                "log",
+                "error",
+                "warn"
+              ]
+            }
+          ]
+        ],
+        "sourceMaps": "inline"
+      },
+      "production": {
+        "plugins": [
+          "babel-plugin-unassert",
+          [
+            "transform-remove-console",
+            {
+              "exclude": [
+                "log",
+                "error",
+                "warn"
+              ]
+            }
+          ]
+        ],
         "sourceMaps": "inline"
       }
     }
@@ -35,6 +84,9 @@
     "@babel/preset-env": "7.10.4",
     "@babel/register": "7.10.5",
     "ava": "3.11.0",
+    "babel-plugin-transform-remove-console": "6.9.4",
+    "babel-plugin-unassert": "3.0.1",
+    "babel-preset-power-assert": "3.0.0",
     "coveralls": "3.1.0",
     "esdoc": "1.1.0",
     "esdoc-ecmascript-proposal-plugin": "1.0.0",
@@ -43,6 +95,7 @@
     "esdoc-standard-plugin": "1.0.0",
     "np": "6.3.2",
     "nyc": "15.1.0",
+    "power-assert": "1.6.1",
     "tap-dot": "2.0.0",
     "xo": "0.32.1"
   },
