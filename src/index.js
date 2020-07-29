@@ -7,6 +7,7 @@ import _redc from './_redc';
 import modN from './modN';
 import modR from './modR';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	Montgomery,
 	_iadd,

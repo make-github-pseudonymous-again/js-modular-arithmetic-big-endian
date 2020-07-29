@@ -1,13 +1,13 @@
 import {
-	_alloc,
-	_zeros,
-	_reset,
-	_copy,
-	jz,
-	_extended_euclidean_algorithm,
-	_trim_positive,
-	_sub,
-	convert
+	_alloc as n_alloc,
+	_zeros as n_zeros,
+	_reset as n_reset,
+	_copy as n_copy,
+	jz as njz,
+	_extended_euclidean_algorithm as n_extended_euclidean_algorithm,
+	_trim_positive as n_trim_positive,
+	_sub as n_sub,
+	convert as nconvert
 } from '@aureooms/js-integer-big-endian';
 
 import _mul from './_mul';
@@ -36,14 +36,14 @@ export default class Montgomery {
 	}
 
 	zero() {
-		return _zeros(this.k);
+		return n_zeros(this.k);
 	}
 
 	from(x) {
 		// Conversion into Montgomery form is done by computing .
 		// aR mod N = REDC((a mod N)(R^2 mod N))
 		const _2kp1 = 2 * this.k + 1;
-		const red = _zeros(_2kp1); // TODO Use UintXArray ?
+		const red = n_zeros(_2kp1); // TODO Use UintXArray ?
 		const amodN = modN(this.b, this.N, x);
 		_mul(this.b, this.N, this.M, this.R2, amodN, red);
 		// TODO many unnecessary copies/alloc can be avoided by
@@ -55,18 +55,18 @@ export default class Montgomery {
 		// Conversion out of Montgomery form is done by computing.
 		// a mod N = REDC(aR mod N)
 		const _2kp1 = 2 * this.k + 1;
-		const _red = _zeros(_2kp1); // TODO Use UintXArray ?
-		_copy(aRmodN, 0, this.k, _red, _2kp1 - this.k);
+		const _red = n_zeros(_2kp1); // TODO Use UintXArray ?
+		n_copy(aRmodN, 0, this.k, _red, _2kp1 - this.k);
 		_redc(this.b, this.k, this.N, 0, this.k, this.M, 0, this.k, _red, 0, _2kp1);
-		const i = _trim_positive(_red, this.k + 1, _2kp1);
-		const red = _alloc(_2kp1 - i); // TODO Use UintXArray ?
-		_copy(_red, i, _2kp1, red, 0);
+		const i = n_trim_positive(_red, this.k + 1, _2kp1);
+		const red = n_alloc(_2kp1 - i); // TODO Use UintXArray ?
+		n_copy(_red, i, _2kp1, red, 0);
 		return red;
 	}
 
 	mul(aRmodN, bRmodN) {
 		const _2kp1 = 2 * this.k + 1;
-		const abRmodN = _zeros(_2kp1);
+		const abRmodN = n_zeros(_2kp1);
 
 		_mul(this.b, this.N, this.M, aRmodN, bRmodN, abRmodN);
 
@@ -74,15 +74,15 @@ export default class Montgomery {
 	}
 
 	add(aRmodN, bRmodN) {
-		const aRpbRmodN = _alloc(this.k);
-		_copy(aRmodN, 0, this.k, aRpbRmodN, 0);
+		const aRpbRmodN = n_alloc(this.k);
+		n_copy(aRmodN, 0, this.k, aRpbRmodN, 0);
 		_iadd(this.b, this.N, aRpbRmodN, bRmodN);
 		return aRpbRmodN;
 	}
 
 	sub(aRmodN, bRmodN) {
-		const aRpbRmodN = _alloc(this.k);
-		_copy(aRmodN, 0, this.k, aRpbRmodN, 0);
+		const aRpbRmodN = n_alloc(this.k);
+		n_copy(aRmodN, 0, this.k, aRpbRmodN, 0);
 		_isub(this.b, this.N, aRpbRmodN, bRmodN);
 		return aRpbRmodN;
 	}
@@ -90,7 +90,7 @@ export default class Montgomery {
 	inv(aRmodN) {
 		// The modular inverse
 		// Compute (aR mod N)^-1 using Euclidean algo
-		const ai = _trim_positive(aRmodN, 0, this.k);
+		const ai = n_trim_positive(aRmodN, 0, this.k);
 
 		let [
 			GCD,
@@ -111,7 +111,7 @@ export default class Montgomery {
 			// eslint-disable-next-line no-unused-vars
 			_5,
 			steps
-		] = _extended_euclidean_algorithm(
+		] = n_extended_euclidean_algorithm(
 			this.b,
 			this.N,
 			0,
@@ -126,12 +126,23 @@ export default class Montgomery {
 			throw new Error('aRmodN has no inverse modulo N');
 
 		const _2kp1 = 2 * this.k + 1;
-		const red = _zeros(_2kp1); // TODO Use UintXArray ?
+		const red = n_zeros(_2kp1); // TODO Use UintXArray ?
 
 		if (steps % 2 === 1) {
 			// We compute N - aRmodNi
-			const temporary = _zeros(this.k);
-			_sub(this.b, this.N, 0, this.k, aRmodNi, 0, this.k, temporary, 0, this.k);
+			const temporary = n_zeros(this.k);
+			n_sub(
+				this.b,
+				this.N,
+				0,
+				this.k,
+				aRmodNi,
+				0,
+				this.k,
+				temporary,
+				0,
+				this.k
+			);
 			aRmodNi = temporary;
 		}
 
@@ -167,20 +178,20 @@ export default class Montgomery {
 	_powb(aRmodN, xbits, nonneg) {
 		// The binary expansion of the exponent is 1 concatenanted with xbits
 		// reversed. Must have xbits.length >= 1.
-		const aRmodNpown = _alloc(this.k);
-		_copy(aRmodN, 0, this.k, aRmodNpown, 0);
+		const aRmodNpown = n_alloc(this.k);
+		n_copy(aRmodN, 0, this.k, aRmodNpown, 0);
 
 		const _2kp1 = 2 * this.k + 1;
-		const temporary = _alloc(_2kp1);
+		const temporary = n_alloc(_2kp1);
 
 		do {
-			_reset(temporary, 0, _2kp1);
+			n_reset(temporary, 0, _2kp1);
 			_mul(this.b, this.N, this.M, aRmodNpown, aRmodNpown, temporary);
-			_copy(temporary, _2kp1 - this.k, _2kp1, aRmodNpown, 0);
+			n_copy(temporary, _2kp1 - this.k, _2kp1, aRmodNpown, 0);
 			if (xbits.pop() === 1) {
-				_reset(temporary, 0, _2kp1);
+				n_reset(temporary, 0, _2kp1);
 				_mul(this.b, this.N, this.M, aRmodNpown, aRmodN, temporary);
-				_copy(temporary, _2kp1 - this.k, _2kp1, aRmodNpown, 0);
+				n_copy(temporary, _2kp1 - this.k, _2kp1, aRmodNpown, 0);
 			}
 		} while (xbits.length);
 
@@ -188,12 +199,12 @@ export default class Montgomery {
 	}
 
 	pow(aRmodN, b, nonneg = true) {
-		if (jz(b, 0, b.length - 1)) {
+		if (njz(b, 0, b.length - 1)) {
 			// B consists of a single limb
 			return this.pown(aRmodN, nonneg ? b[b.length - 1] : -b[b.length - 1]);
 		}
 
-		const xbits = convert(this.b, 2, b, 0, b.length);
+		const xbits = nconvert(this.b, 2, b, 0, b.length);
 		xbits.reverse();
 		xbits.pop();
 

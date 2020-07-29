@@ -1,4 +1,9 @@
-import {_iadd, _isub, _cmp, _cmp_n} from '@aureooms/js-integer-big-endian';
+import {
+	_iadd as n_iadd,
+	_isub as n_isub,
+	_cmp as n_cmp,
+	_cmp_n as n_cmp_n
+} from '@aureooms/js-integer-big-endian';
 
 /**
  *
@@ -23,22 +28,22 @@ import {_iadd, _isub, _cmp, _cmp_n} from '@aureooms/js-integer-big-endian';
  *               // to avoid side channel attacks
  *
  */
-export default function (r, N, a, b) {
+export default function _iadd(r, N, a, b) {
 	const k = N.length;
 
 	if (a.length !== k) throw new Error('|a| !== k');
 	if (b.length > k) throw new Error('|b| > k');
 
-	_iadd(r, a, 0, k, b, 0, b.length);
+	n_iadd(r, a, 0, k, b, 0, b.length);
 	// TODO  Use overflow bit.
 	// const overflow = _iadd(r, a, 0, k, b, 0, b.length) ;
 
 	if (
 		// Overflow
-		_cmp(a, 0, k, b, 0, b.length) < 0 ||
-		_cmp_n(a, 0, k, N, 0) >= 0
+		n_cmp(a, 0, k, b, 0, b.length) < 0 ||
+		n_cmp_n(a, 0, k, N, 0) >= 0
 	) {
-		_isub(r, a, 0, k, N, 0, k); // Exploits wrapping
+		n_isub(r, a, 0, k, N, 0, k); // Exploits wrapping
 		return true;
 	}
 

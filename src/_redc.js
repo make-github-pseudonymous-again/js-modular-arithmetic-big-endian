@@ -1,11 +1,11 @@
 import {
-	_zeros,
-	_copy,
-	_reset,
-	_cmp_n,
-	_mul,
-	_iadd,
-	_isub
+	_zeros as n_zeros,
+	_copy as n_copy,
+	_reset as n_reset,
+	_cmp_n as n_cmp_n,
+	_mul as n_mul,
+	_iadd as n_iadd,
+	_isub as n_isub
 } from '@aureooms/js-integer-big-endian';
 
 /**
@@ -41,11 +41,11 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 	const _Ti = Tj - k;
 	const _2k = k << 1;
 
-	const m = _zeros(_2k);
+	const m = n_zeros(_2k);
 	const mj = _2k;
 
 	// M = ((T mod R) M) mod R
-	_mul(b, T, _Ti, Tj, M, Mi, Mj, m, 0, mj);
+	n_mul(b, T, _Ti, Tj, M, Mi, Mj, m, 0, mj);
 	// Could be even more efficient here
 	// if we had a multiplication method that discards higher order
 	// bits
@@ -53,24 +53,24 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 	const mi = k; // M = m mod R
 
 	// X = m * N
-	const X = _zeros(_2k); // TODO mutualize allocation with m
+	const X = n_zeros(_2k); // TODO mutualize allocation with m
 	const Xj = _2k;
-	_mul(b, m, mi, mj, N, Ni, Nj, X, 0, Xj);
+	n_mul(b, m, mi, mj, N, Ni, Nj, X, 0, Xj);
 
 	// T = T + X = T + mN
-	_iadd(b, T, Ti, Tj, X, 0, Xj);
+	n_iadd(b, T, Ti, Tj, X, 0, Xj);
 
 	// T = T / R
 	if (T[Ti] !== 0) throw new Error('T[Ti] !== 0');
-	_copy(T, Ti + 1, _Ti, T, _Ti);
+	n_copy(T, Ti + 1, _Ti, T, _Ti);
 	// Assert T[Ti] === 0
 	const _Ti_1 = _Ti;
 	// T[_Ti_1] = T[Ti];
-	_reset(T, Ti, _Ti_1);
+	n_reset(T, Ti, _Ti_1);
 
 	// If t ≥ N then
-	if (_cmp_n(T, _Ti_1, Tj, N, Ni) >= 0) {
-		_isub(b, T, _Ti_1, Tj, N, Ni, Nj); // Return t − N
+	if (n_cmp_n(T, _Ti_1, Tj, N, Ni) >= 0) {
+		n_isub(b, T, _Ti_1, Tj, N, Ni, Nj); // Return t − N
 		return true;
 	}
 

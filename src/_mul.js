@@ -1,4 +1,4 @@
-import {_mul} from '@aureooms/js-integer-big-endian';
+import {_mul as n_mul} from '@aureooms/js-integer-big-endian';
 
 import _redc from './_redc';
 
@@ -17,7 +17,7 @@ import _redc from './_redc';
  *
  */
 
-export default function (r, N, M, a, b, c) {
+export default function _mul(r, N, M, a, b, c) {
 	const k = N.length;
 	const _2kp1 = 2 * k + 1;
 
@@ -26,7 +26,7 @@ export default function (r, N, M, a, b, c) {
 	if (c.length !== _2kp1) throw new Error('|c| !== 2*k+1');
 
 	// C = (aR mod N)(bR mod N)
-	_mul(
+	n_mul(
 		r,
 		a,
 		0,
