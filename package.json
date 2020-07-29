@@ -117,7 +117,7 @@
     "url": "https://github.com/aureooms/js-modular-arithmetic-big-endian"
   },
   "scripts": {
-    "build": "rm -rf lib && babel src -d lib",
+    "build": "babel --delete-dir-on-start --env-name production src -d lib",
     "cover": "nyc --reporter=lcov npm test -- --tap | tap-dot",
     "esdoc": "esdoc",
     "prepare": "npm run build",
