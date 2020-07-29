@@ -5,6 +5,8 @@ import {
 	_cmp_n as n_cmp_n,
 } from '@aureooms/js-integer-big-endian';
 
+import assert from 'assert';
+
 /**
  *
  * @param {Number} r the radix
@@ -31,8 +33,10 @@ import {
 export default function _iadd(r, N, a, b) {
 	const k = N.length;
 
-	if (a.length !== k) throw new Error('|a| !== k');
-	if (b.length > k) throw new Error('|b| > k');
+	assert(k >= 1);
+	assert(N[0] !== 0);
+	assert(a.length === k, '|a| !== k');
+	assert(b.length <= k, '|b| > k');
 
 	n_iadd(r, a, 0, k, b, 0, b.length);
 	// TODO  Use overflow bit.

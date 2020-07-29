@@ -2,7 +2,9 @@ import {_mul as n_mul} from '@aureooms/js-integer-big-endian';
 
 import _redc from './_redc';
 
-//
+import assert from 'assert';
+
+// TODO
 // mul by non montgomery ?
 // abR mod N = (aR mod N)(b mod N) MODULO????
 
@@ -21,9 +23,9 @@ export default function _mul(r, N, M, a, b, c) {
 	const k = N.length;
 	const _2kp1 = 2 * k + 1;
 
-	if (a.length > k) throw new Error('|a| > |N|');
-	if (b.length > a.length) throw new Error('|b| > |a|');
-	if (c.length !== _2kp1) throw new Error('|c| !== 2*k+1');
+	assert(a.length <= k, '|a| > |N|');
+	assert(b.length <= a.length, '|b| > |a|');
+	assert(c.length === _2kp1, '|c| !== 2*k+1');
 
 	// C = (aR mod N)(bR mod N)
 	n_mul(

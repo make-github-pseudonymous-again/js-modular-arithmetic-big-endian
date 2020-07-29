@@ -10,6 +10,8 @@ import {
 
 import _redc from './_redc';
 
+import assert from 'assert';
+
 /**
  *
  * N has no leading zeroes
@@ -22,6 +24,9 @@ import _redc from './_redc';
  *
  */
 export default function _montgomery(b, N) {
+	assert(N.length >= 1);
+	assert(N[0] !== 0);
+
 	const k = N.length;
 
 	const _2kp1 = 2 * k + 1;

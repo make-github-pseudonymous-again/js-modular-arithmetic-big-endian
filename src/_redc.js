@@ -8,6 +8,8 @@ import {
 	_isub as n_isub,
 } from '@aureooms/js-integer-big-endian';
 
+import assert from 'assert';
+
 /**
  * Function REDC is
  *
@@ -32,10 +34,10 @@ import {
  *
  */
 export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
-	if (Nj - Ni !== k) throw new Error('|N| !== k');
-	if (Mj - Mi !== k) throw new Error('|M| !== k'); // Can allow <= k here.
-	if (Tj - Ti !== 2 * k + 1) throw new Error('|T| !== 2*k+1');
-	if (T[Ti] !== 0) throw new Error('T[Ti] !== 0');
+	assert(Nj - Ni === k, '|N| !== k');
+	assert(Mj - Mi === k, '|M| !== k'); // Can allow |M| <= k here.
+	assert(Tj - Ti === 2 * k + 1, '|T| !== 2*k+1');
+	assert(T[Ti] === 0, 'T[Ti] !== 0');
 
 	// Reduce T mod R
 	const _Ti = Tj - k;
@@ -61,7 +63,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 	n_iadd(b, T, Ti, Tj, X, 0, Xj);
 
 	// T = T / R
-	if (T[Ti] !== 0) throw new Error('T[Ti] !== 0');
+	assert(T[Ti] === 0, 'T[Ti] !== 0');
 	n_copy(T, Ti + 1, _Ti, T, _Ti);
 	// Assert T[Ti] === 0
 	const _Ti_1 = _Ti;
