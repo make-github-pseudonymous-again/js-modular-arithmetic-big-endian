@@ -7,7 +7,7 @@ import {
 	_extended_euclidean_algorithm as n_extended_euclidean_algorithm,
 	_trim_positive as n_trim_positive,
 	_sub as n_sub,
-	convert as nconvert
+	convert as nconvert,
 } from '@aureooms/js-integer-big-endian';
 
 import _mul from './_mul';
@@ -110,7 +110,7 @@ export default class Montgomery {
 			_4,
 			// eslint-disable-next-line no-unused-vars
 			_5,
-			steps
+			steps,
 		] = n_extended_euclidean_algorithm(
 			this.b,
 			this.N,
@@ -118,7 +118,7 @@ export default class Montgomery {
 			this.k,
 			aRmodN,
 			ai,
-			this.k
+			this.k,
 		);
 
 		// Assert that GCD(N,aRmodN) is 1.
@@ -141,7 +141,7 @@ export default class Montgomery {
 				this.k,
 				temporary,
 				0,
-				this.k
+				this.k,
 			);
 			aRmodNi = temporary;
 		}

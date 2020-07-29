@@ -36,7 +36,7 @@ export default function _mul(r, N, M, a, b, c) {
 		b.length,
 		c,
 		_2kp1 - a.length - b.length,
-		_2kp1
+		_2kp1,
 	);
 
 	// C = REDC((aR mod N)(bR mod N))

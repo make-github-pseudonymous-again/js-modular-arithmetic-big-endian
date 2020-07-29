@@ -16,7 +16,7 @@ export default {
 	_mul,
 	_redc,
 	modN,
-	modR
+	modR,
 };
 
 export {Montgomery, _iadd, _isub, _montgomery, _mul, _redc, modN, modR};

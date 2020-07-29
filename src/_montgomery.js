@@ -5,7 +5,7 @@ import {
 	_mul as n_mul,
 	_idivmod as n_idivmod,
 	_sub as n_sub,
-	_extended_euclidean_algorithm as n_extended_euclidean_algorithm
+	_extended_euclidean_algorithm as n_extended_euclidean_algorithm,
 } from '@aureooms/js-integer-big-endian';
 
 import _redc from './_redc';
@@ -46,7 +46,7 @@ export default function _montgomery(b, N) {
 		_4,
 		// eslint-disable-next-line no-unused-vars
 		_5,
-		steps
+		steps,
 	] = n_extended_euclidean_algorithm(b, _R, k, _2kp1, N, 0, k);
 
 	// Assert that GCD(R,N) is 1.

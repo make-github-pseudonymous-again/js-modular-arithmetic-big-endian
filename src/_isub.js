@@ -1,7 +1,7 @@
 import {
 	_iadd as n_iadd,
 	_isub as n_isub,
-	_cmp as n_cmp
+	_cmp as n_cmp,
 } from '@aureooms/js-integer-big-endian';
 
 /**

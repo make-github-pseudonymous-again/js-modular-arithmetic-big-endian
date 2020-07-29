@@ -1,6 +1,6 @@
 import {
 	_alloc as n_alloc,
-	_copy as n_copy
+	_copy as n_copy,
 } from '@aureooms/js-integer-big-endian';
 
 /**
