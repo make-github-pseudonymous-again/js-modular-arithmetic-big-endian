@@ -2,7 +2,7 @@
   "name": "@aureooms/js-modular-arithmetic-big-endian",
   "description": "Modular arithmetic for JavaScript",
   "version": "0.0.0",
-  "author": "aureooms",
+  "author": "Aurélien Ooms <aurelien.ooms@gmail.com>",
   "ava": {
     "files": [
       "test/src/**/*"
