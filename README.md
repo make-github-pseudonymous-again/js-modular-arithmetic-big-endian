@@ -37,7 +37,7 @@ str(y) ; // 51815386826945512755518685488363592823806772017922768894709047770322
 
 [![Code issues](https://img.shields.io/codeclimate/issues/aureooms/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/aureooms/js-modular-arithmetic-big-endian/issues)
 [![Code maintainability](https://img.shields.io/codeclimate/maintainability/aureooms/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/aureooms/js-modular-arithmetic-big-endian/trends/churn)
-[![Code coverage (alls)](https://img.shields.io/coveralls/github/aureooms/js-modular-arithmetic-big-endian/main.svg)](https://coveralls.io/r/aureooms/js-modular-arithmetic-big-endian)
+[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/aureooms/js-modular-arithmetic-big-endian/main.svg)](https://codecov.io/gh/aureooms/js-modular-arithmetic-big-endian)
 [![Code technical debt](https://img.shields.io/codeclimate/tech-debt/aureooms/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/aureooms/js-modular-arithmetic-big-endian/trends/technical_debt)
 [![Documentation](https://aureooms.github.io/js-modular-arithmetic-big-endian/badge.svg)](https://aureooms.github.io/js-modular-arithmetic-big-endian/source.html)
 [![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-modular-arithmetic-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-modular-arithmetic-big-endian)
