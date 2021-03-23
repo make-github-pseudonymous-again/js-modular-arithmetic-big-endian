@@ -76,7 +76,7 @@
     "url": "https://github.com/aureooms/js-modular-arithmetic-big-endian/issues"
   },
   "dependencies": {
-    "@aureooms/js-integer-big-endian": "^10.1.0"
+    "@aureooms/js-integer-big-endian": "^11.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.13.10",
