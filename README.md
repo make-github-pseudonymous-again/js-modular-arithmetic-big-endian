@@ -1,4 +1,4 @@
-[@aureooms/js-modular-arithmetic-big-endian](https://aureooms.github.io/js-modular-arithmetic-big-endian)
+:mermaid: [@aureooms/js-modular-arithmetic-big-endian](https://aureooms.github.io/js-modular-arithmetic-big-endian)
 ==
 
 Modular arithmetic for JavaScript.
