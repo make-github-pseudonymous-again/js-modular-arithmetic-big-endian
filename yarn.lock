@@ -19,7 +19,7 @@
   resolved "https://registry.yarnpkg.com/@aureooms/js-integer-big-endian/-/js-integer-big-endian-11.0.0.tgz#b37f217f1fbc0314105df7ef9dd637ef842fca9b"
   integrity sha512-FQQwmyfjXTMWEgiM4zK3GDvBseXPBycjv/S23E9iGoI8/n15RHzyJK/kYc7yw9XZw653BauhkeRlTrZw/MoMrg==
 
-"@aureooms/js-itertools@^5.0.2":
+"@aureooms/js-itertools@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@aureooms/js-itertools/-/js-itertools-5.0.2.tgz#d3da95e219e069aed4483cc9dcd7e73970ce83db"
   integrity sha512-FXCeJh0qRUdo2pJyEruN5rOQcelTZpfoC0e0dZPu+kziyhnkeG+LuTYMRBDJnH/XJ4zTGPmKKtahtVeTFG17mA==
