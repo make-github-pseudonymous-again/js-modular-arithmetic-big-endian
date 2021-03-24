@@ -29,7 +29,7 @@ str(y) ; // 51815386826945512755518685488363592823806772017922768894709047770322
 
 [![License](https://img.shields.io/github/license/aureooms/js-modular-arithmetic-big-endian.svg)](https://raw.githubusercontent.com/aureooms/js-modular-arithmetic-big-endian/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@aureooms/js-modular-arithmetic-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-modular-arithmetic-big-endian)
-[![Build](https://img.shields.io/travis/aureooms/js-modular-arithmetic-big-endian/main.svg)](https://travis-ci.org/aureooms/js-modular-arithmetic-big-endian/branches)
+[![Build](https://img.shields.io/travis/aureooms/js-modular-arithmetic-big-endian/main.svg)](https://travis-ci.com/aureooms/js-modular-arithmetic-big-endian/branches)
 [![Dependencies](https://img.shields.io/david/aureooms/js-modular-arithmetic-big-endian.svg)](https://david-dm.org/aureooms/js-modular-arithmetic-big-endian)
 [![Dev dependencies](https://img.shields.io/david/dev/aureooms/js-modular-arithmetic-big-endian.svg)](https://david-dm.org/aureooms/js-modular-arithmetic-big-endian?type=dev)
 [![GitHub issues](https://img.shields.io/github/issues/aureooms/js-modular-arithmetic-big-endian.svg)](https://github.com/aureooms/js-modular-arithmetic-big-endian/issues)
