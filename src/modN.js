@@ -7,7 +7,7 @@ import {
 	_cmp_n as n_cmp_n,
 } from '@aureooms/js-integer-big-endian';
 
-import modR from './modR';
+import modR from './modR.js';
 
 export default function modN(r, N, x) {
 	const k = N.length;

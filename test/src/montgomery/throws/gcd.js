@@ -4,7 +4,7 @@ import {parse} from '@aureooms/js-integer-big-endian';
 
 import iter from '../../../fixtures/iter.js';
 
-import {Montgomery} from '../../../../src';
+import {Montgomery} from '../../../../src/index.js';
 
 function throws(t, b, D, N) {
 	const n = parse(D, b, N);

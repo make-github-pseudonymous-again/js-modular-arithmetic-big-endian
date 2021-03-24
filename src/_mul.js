@@ -1,6 +1,6 @@
 import {_mul as n_mul} from '@aureooms/js-integer-big-endian';
 
-import _redc from './_redc';
+import _redc from './_redc.js';
 
 import assert from 'assert';
 

@@ -1,5 +1,5 @@
 import path from 'path';
-import lines from './lines';
+import lines from './lines.js';
 import {map} from '@aureooms/js-itertools';
 
 export default function numbers (filename) {

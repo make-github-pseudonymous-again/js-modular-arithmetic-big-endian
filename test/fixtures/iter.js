@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime.js';
-import numbers from './numbers';
+import numbers from './numbers.js';
 
 export default function iter ( path, test, macro ) {
 	for (const args of numbers(path)) {

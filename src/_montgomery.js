@@ -8,7 +8,7 @@ import {
 	_extended_euclidean_algorithm as n_extended_euclidean_algorithm,
 } from '@aureooms/js-integer-big-endian';
 
-import _redc from './_redc';
+import _redc from './_redc.js';
 
 import assert from 'assert';
 

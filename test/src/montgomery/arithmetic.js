@@ -4,7 +4,7 @@ import {parse, stringify} from '@aureooms/js-integer-big-endian';
 
 import iter from '../../fixtures/iter.js';
 
-import {Montgomery} from '../../../src';
+import {Montgomery} from '../../../src/index.js';
 
 const compute = {
 	'mul': (m, a, b) => m.mul(a, b),

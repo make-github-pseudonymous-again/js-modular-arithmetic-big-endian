@@ -10,13 +10,13 @@ import {
 	convert as nconvert,
 } from '@aureooms/js-integer-big-endian';
 
-import _mul from './_mul';
-import _iadd from './_iadd';
-import _isub from './_isub';
-import _redc from './_redc';
-import _montgomery from './_montgomery';
-import modR from './modR';
-import modN from './modN';
+import _mul from './_mul.js';
+import _iadd from './_iadd.js';
+import _isub from './_isub.js';
+import _redc from './_redc.js';
+import _montgomery from './_montgomery.js';
+import modR from './modR.js';
+import modN from './modN.js';
 
 export default class Montgomery {
 	constructor(b, N) {

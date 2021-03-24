@@ -5,7 +5,7 @@ import {parse, stringify} from '@aureooms/js-integer-big-endian';
 import iter from '../../fixtures/iter.js';
 import fmt from '../../fixtures/fmt.js';
 
-import {Montgomery} from '../../../src';
+import {Montgomery} from '../../../src/index.js';
 
 const compute = {
 	'pow': (m, a, b, nonneg) => m.pow(a, b, nonneg),

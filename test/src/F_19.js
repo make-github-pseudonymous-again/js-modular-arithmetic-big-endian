@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import {Montgomery} from '../../src';
+import {Montgomery} from '../../src/index.js';
 
 const BASE = 10;
 
