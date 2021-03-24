@@ -11,7 +11,8 @@ function throws(t, b, D, N) {
 	t.throws(() => new Montgomery(b, n), {message: /GCD/});
 }
 
-throws.title = (_, b, D, N) => `Montgomery(${b}, ${N}_${D}) throws because of GCD.`;
+throws.title = (_, b, D, N) =>
+	`Montgomery(${b}, ${N}_${D}) throws because of GCD.`;
 
 test(throws, 10, 10, '10');
 test(throws, 10, 10, '12');

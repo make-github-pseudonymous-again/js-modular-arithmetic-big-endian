@@ -7,9 +7,9 @@ import iter from '../../fixtures/iter.js';
 import {Montgomery} from '../../../src/index.js';
 
 const compute = {
-	'mul': (m, a, b) => m.mul(a, b),
-	'add': (m, a, b) => m.add(a, b),
-	'sub': (m, a, b) => m.sub(a, b),
+	mul: (m, a, b) => m.mul(a, b),
+	add: (m, a, b) => m.add(a, b),
+	sub: (m, a, b) => m.sub(a, b),
 };
 
 function macro(t, REPRESENTATION_BASE, DISPLAY_BASE, o, N, A, B, expected) {

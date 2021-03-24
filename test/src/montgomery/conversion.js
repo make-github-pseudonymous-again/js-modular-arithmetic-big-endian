@@ -17,18 +17,13 @@ function macro(t, R, D, N, A, expected) {
 
 	const amodN = mont.out(_amodN);
 
-	const AmodN = stringify(
-		R,
-		D,
-		amodN,
-		0,
-		amodN.length,
-	);
+	const AmodN = stringify(R, D, amodN, 0, amodN.length);
 
 	t.is(expected, AmodN);
 }
 
-macro.title = (_, R, D, N, A, expected) => `[${R}] ${fmt(A)}_${D} = ${fmt(expected)}_${D} mod ${fmt(N)}_${D}`;
+macro.title = (_, R, D, N, A, expected) =>
+	`[${R}] ${fmt(A)}_${D} = ${fmt(expected)}_${D} mod ${fmt(N)}_${D}`;
 
 test(macro, 10, 10, '13', '125', '8');
 test(macro, 10, 10, '497', '4', '4');
