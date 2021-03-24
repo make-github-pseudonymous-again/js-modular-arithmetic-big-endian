@@ -138,10 +138,13 @@
       "camelcase": "off",
       "unicorn/filename-case": "off"
     },
-    "ignores": [
-      "lib",
-      "doc",
-      "test/src/generated"
+    "overrides": [
+      {
+        "files": [
+          "doc/**"
+        ],
+        "env": "browser"
+      }
     ]
   }
 }
