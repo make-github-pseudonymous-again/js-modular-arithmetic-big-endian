@@ -1,7 +1,7 @@
 {
   "name": "@aureooms/js-modular-arithmetic-big-endian",
   "description": "Modular arithmetic for JavaScript",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "license": "AGPL-3.0",
   "author": "Aurélien Ooms <aurelien.ooms@gmail.com>",
   "homepage": "https://aureooms.github.io/js-modular-arithmetic-big-endian",
