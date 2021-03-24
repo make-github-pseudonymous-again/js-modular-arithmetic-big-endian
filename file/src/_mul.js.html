@@ -42,11 +42,13 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/_mul.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {_mul} from &apos;@aureooms/js-integer-big-endian&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {_mul as n_mul} from &apos;@aureooms/js-integer-big-endian&apos;;
 
-import _redc from &apos;./_redc&apos;;
+import _redc from &apos;./_redc.js&apos;;
 
-//
+import assert from &apos;assert&apos;;
+
+// TODO
 // mul by non montgomery ?
 // abR mod N = (aR mod N)(b mod N) MODULO????
 
@@ -61,16 +63,16 @@ import _redc from &apos;./_redc&apos;;
  *
  */
 
-export default function (r, N, M, a, b, c) {
+export default function _mul(r, N, M, a, b, c) {
 	const k = N.length;
 	const _2kp1 = 2 * k + 1;
 
-	if (a.length &gt; k) throw new Error(&apos;|a| &gt; |N|&apos;);
-	if (b.length &gt; a.length) throw new Error(&apos;|b| &gt; |a|&apos;);
-	if (c.length !== _2kp1) throw new Error(&apos;|c| !== 2*k+1&apos;);
+	assert(a.length &lt;= k, &apos;|a| &gt; |N|&apos;);
+	assert(b.length &lt;= a.length, &apos;|b| &gt; |a|&apos;);
+	assert(c.length === _2kp1, &apos;|c| !== 2*k+1&apos;);
 
 	// C = (aR mod N)(bR mod N)
-	_mul(
+	n_mul(
 		r,
 		a,
 		0,
@@ -80,7 +82,7 @@ export default function (r, N, M, a, b, c) {
 		b.length,
 		c,
 		_2kp1 - a.length - b.length,
-		_2kp1
+		_2kp1,
 	);
 
 	// C = REDC((aR mod N)(bR mod N))

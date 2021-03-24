@@ -42,16 +42,23 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/modR.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {_alloc, _copy} from &apos;@aureooms/js-integer-big-endian&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+	_alloc as n_alloc,
+	_copy as n_copy,
+} from &apos;@aureooms/js-integer-big-endian&apos;;
+
+import assert from &apos;assert&apos;;
 
 /**
  *
  * |x| &gt;= k
  *
  */
-export default function (k, x) {
-	const xmodR = _alloc(k); // TODO Use UintXArray ?
-	_copy(x, x.length - k, x.length, xmodR, 0);
+export default function modR(k, x) {
+	assert(x.length &gt;= k, &apos;|x| &gt;= k&apos;);
+
+	const xmodR = n_alloc(k); // TODO Use UintXArray ?
+	n_copy(x, x.length - k, x.length, xmodR, 0);
 	return xmodR;
 }
 </code></pre>
