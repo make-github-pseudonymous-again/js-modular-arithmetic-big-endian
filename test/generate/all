@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+python3 test/generate/montgomery/arithmetic.py
+python3 test/generate/montgomery/conversion.py
+python3 test/generate/montgomery/pow.py
+python3 test/generate/montgomery/throws-gcd.py
+python3 test/generate/montgomery/throws-no-inverse.py
