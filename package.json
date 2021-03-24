@@ -93,6 +93,7 @@
     "concurrency": 4
   },
   "babel": {
+    "sourceMaps": true,
     "presets": [
       [
         "@babel/preset-env",
@@ -171,8 +172,7 @@
           ]
         ]
       }
-    },
-    "sourceMaps": true
+    }
   },
   "prettier": {
     "trailingComma": "all"
