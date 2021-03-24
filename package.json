@@ -38,7 +38,7 @@
     "build-docs": "esdoc",
     "build-gh-pages": "npm run build-docs",
     "commit-msg": "commitlint --edit",
-    "cover": "c8 --all --src src --reporter=lcov npm test -- --tap | tap-dot",
+    "cover": "c8 --all --src src --reporter=lcov npm test",
     "debug": "NODE_ENV=debug npm run test -- -st --fail-fast",
     "dev": "npm run lint-config-and-fix && npm run lint-and-fix && npm run cover -- -- -st --fail-fast",
     "install-hooks": "husky install",
@@ -53,7 +53,7 @@
     "prepublishOnly": "pinst --disable",
     "release": "np --message ':hatching_chick: release: Bumping to v%s.'",
     "test": "ava",
-    "travis": "npm run lint-config && npm run lint && npm run cover"
+    "travis": "npm run lint-config && npm run lint && npm run cover -- -- --tap | tap-dot"
   },
   "dependencies": {
     "@aureooms/js-integer-big-endian": "^11.0.0"
