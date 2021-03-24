@@ -98,7 +98,8 @@
     "nyc": "15.1.0",
     "power-assert": "1.6.1",
     "tap-dot": "2.0.0",
-    "xo": "0.38.2"
+    "xo": "0.38.2",
+    "fixpack": "4.0.0"
   },
   "files": [
     "lib"
@@ -126,7 +127,9 @@
     "prepare": "npm run build",
     "release": "np",
     "test": "ava",
-    "travis": "npm run lint && npm run cover"
+    "travis": "npm run lint && npm run cover",
+    "lint-config": "fixpack --dryRun",
+    "lint-config-and-fix": "fixpack || fixpack"
   },
   "sideEffects": false,
   "xo": {
