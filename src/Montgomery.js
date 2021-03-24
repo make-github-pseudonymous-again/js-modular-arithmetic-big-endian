@@ -193,7 +193,7 @@ export default class Montgomery {
 				_mul(this.b, this.N, this.M, aRmodNpown, aRmodN, temporary);
 				n_copy(temporary, _2kp1 - this.k, _2kp1, aRmodNpown, 0);
 			}
-		} while (xbits.length);
+		} while (xbits.length > 0);
 
 		return nonneg ? aRmodNpown : this.inv(aRmodNpown);
 	}

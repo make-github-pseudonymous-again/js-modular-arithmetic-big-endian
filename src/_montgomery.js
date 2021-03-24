@@ -24,7 +24,7 @@ import assert from 'assert';
  *
  */
 export default function _montgomery(b, N) {
-	assert(N.length >= 1);
+	assert(N.length > 0);
 	assert(N[0] !== 0);
 
 	const k = N.length;
