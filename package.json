@@ -7,10 +7,10 @@
   "homepage": "https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aureooms/js-modular-arithmetic-big-endian"
+    "url": "https://github.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian"
   },
   "bugs": {
-    "url": "https://github.com/aureooms/js-modular-arithmetic-big-endian/issues"
+    "url": "https://github.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/issues"
   },
   "keywords": [
     "arithmetic",
