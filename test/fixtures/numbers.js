@@ -1,6 +1,6 @@
 import path from 'path';
+import {map} from '@iterable-iterator/map';
 import lines from './lines.js';
-import {map} from '@aureooms/js-itertools';
 
 export default function numbers(filename) {
 	const filepath = path.join('test/data/', filename);

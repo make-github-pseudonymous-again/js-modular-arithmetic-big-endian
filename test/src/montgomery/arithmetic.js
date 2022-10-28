@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import {parse, stringify} from '@aureooms/js-integer-big-endian';
+import {parse, stringify} from '@arithmetic-operations-for/naturals-big-endian';
 
 import iter from '../../fixtures/iter.js';
 

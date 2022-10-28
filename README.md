@@ -1,13 +1,13 @@
-:mermaid: [@aureooms/js-modular-arithmetic-big-endian](https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian)
+:mermaid: [@arithmetic-operations-for/integers-modulo-n-big-endian](https://arithmetic-operations-for.github.io/integers-modulo-n-big-endian)
 ==
 
 Modular arithmetic for JavaScript.
-See [docs](https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian/index.html).
+See [docs](https://arithmetic-operations-for.github.io/integers-modulo-n-big-endian/index.html).
 
 > [Try it on RunKit](https://runkit.com/aureooms/js-modular-arithmetic-big-endian)!
 
 ```js
-import { Montgomery } from '@aureooms/js-modular-arithmetic-big-endian' ; 
+import { Montgomery } from '@arithmetic-operations-for/integers-modulo-n-big-endian' ; 
 const int = s => s.split('').map(x => +x) ;
 const str = x => x.join('') ;
 const base = 10 ;
@@ -27,17 +27,17 @@ const y = mont.out(_y) ;
 str(y) ; // 51815386826945512755518685488363592823806772017922768894709047770322605499358
 ```
 
-[![License](https://img.shields.io/github/license/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://raw.githubusercontent.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/main/LICENSE)
-[![Version](https://img.shields.io/npm/v/@aureooms/js-modular-arithmetic-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-modular-arithmetic-big-endian)
-[![Build](https://img.shields.io/travis/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/main.svg)](https://travis-ci.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/branches)
-[![Dependencies](https://img.shields.io/david/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://david-dm.org/make-github-pseudonymous-again/js-modular-arithmetic-big-endian)
-[![Dev dependencies](https://img.shields.io/david/dev/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://david-dm.org/make-github-pseudonymous-again/js-modular-arithmetic-big-endian?type=dev)
-[![GitHub issues](https://img.shields.io/github/issues/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://github.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/issues)
-[![Downloads](https://img.shields.io/npm/dm/@aureooms/js-modular-arithmetic-big-endian.svg)](https://www.npmjs.org/package/@aureooms/js-modular-arithmetic-big-endian)
+[![License](https://img.shields.io/github/license/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://raw.githubusercontent.com/arithmetic-operations-for/integers-modulo-n-big-endian/main/LICENSE)
+[![Version](https://img.shields.io/npm/v/@arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/integers-modulo-n-big-endian)
+[![Build](https://img.shields.io/travis/arithmetic-operations-for/integers-modulo-n-big-endian/main.svg)](https://travis-ci.com/arithmetic-operations-for/integers-modulo-n-big-endian/branches)
+[![Dependencies](https://img.shields.io/david/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://david-dm.org/arithmetic-operations-for/integers-modulo-n-big-endian)
+[![Dev dependencies](https://img.shields.io/david/dev/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://david-dm.org/arithmetic-operations-for/integers-modulo-n-big-endian?type=dev)
+[![GitHub issues](https://img.shields.io/github/issues/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian/issues)
+[![Downloads](https://img.shields.io/npm/dm/@arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/integers-modulo-n-big-endian)
 
-[![Code issues](https://img.shields.io/codeclimate/issues/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/issues)
-[![Code maintainability](https://img.shields.io/codeclimate/maintainability/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/trends/churn)
-[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/main.svg)](https://codecov.io/gh/make-github-pseudonymous-again/js-modular-arithmetic-big-endian)
-[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/make-github-pseudonymous-again/js-modular-arithmetic-big-endian.svg)](https://codeclimate.com/github/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/trends/technical_debt)
-[![Documentation](https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian/badge.svg)](https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian/source.html)
-[![Package size](https://img.shields.io/bundlephobia/minzip/@aureooms/js-modular-arithmetic-big-endian)](https://bundlephobia.com/result?p=@aureooms/js-modular-arithmetic-big-endian)
+[![Code issues](https://img.shields.io/codeclimate/issues/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/integers-modulo-n-big-endian/issues)
+[![Code maintainability](https://img.shields.io/codeclimate/maintainability/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/integers-modulo-n-big-endian/trends/churn)
+[![Code coverage (cov)](https://img.shields.io/codecov/c/gh/arithmetic-operations-for/integers-modulo-n-big-endian/main.svg)](https://codecov.io/gh/arithmetic-operations-for/integers-modulo-n-big-endian)
+[![Code technical debt](https://img.shields.io/codeclimate/tech-debt/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://codeclimate.com/github/arithmetic-operations-for/integers-modulo-n-big-endian/trends/technical_debt)
+[![Documentation](https://arithmetic-operations-for.github.io/integers-modulo-n-big-endian/badge.svg)](https://arithmetic-operations-for.github.io/integers-modulo-n-big-endian/source.html)
+[![Package size](https://img.shields.io/bundlephobia/minzip/@arithmetic-operations-for/integers-modulo-n-big-endian)](https://bundlephobia.com/result?p=@arithmetic-operations-for/integers-modulo-n-big-endian)

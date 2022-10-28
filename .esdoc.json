@@ -17,7 +17,7 @@
           "autoPrivate": true
         },
         "brand": {
-          "title": "@aureooms/js-modular-arithmetic-big-endian"
+          "title": "@arithmetic-operations-for/integers-modulo-n-big-endian"
         },
         "test": {
           "type": "ava",

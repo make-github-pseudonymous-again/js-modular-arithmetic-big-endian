@@ -8,15 +8,15 @@ or [jspm](https://jspm.org/docs).
 
 ### yarn
 ```terminal
-yarn add @aureooms/js-modular-arithmetic-big-endian
+yarn add @arithmetic-operations-for/integers-modulo-n-big-endian
 ```
 
 ### npm
 ```terminal
-npm install @aureooms/js-modular-arithmetic-big-endian --save
+npm install @arithmetic-operations-for/integers-modulo-n-big-endian --save
 ```
 
 ### jspm
 ```terminal
-jspm install npm:@aureooms/js-modular-arithmetic-big-endian
+jspm install npm:@arithmetic-operations-for/integers-modulo-n-big-endian
 ```

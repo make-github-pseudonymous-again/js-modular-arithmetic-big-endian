@@ -1,3 +1,4 @@
+import assert from 'assert';
 import {
 	_alloc as n_alloc,
 	_zeros as n_zeros,
@@ -6,11 +7,9 @@ import {
 	_idivmod as n_idivmod,
 	_sub as n_sub,
 	_extended_euclidean_algorithm as n_extended_euclidean_algorithm,
-} from '@aureooms/js-integer-big-endian';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 import _redc from './_redc.js';
-
-import assert from 'assert';
 
 /**
  *

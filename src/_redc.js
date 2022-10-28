@@ -1,3 +1,4 @@
+import assert from 'assert';
 import {
 	_zeros as n_zeros,
 	_copy as n_copy,
@@ -6,9 +7,7 @@ import {
 	_mul as n_mul,
 	_iadd as n_iadd,
 	_isub as n_isub,
-} from '@aureooms/js-integer-big-endian';
-
-import assert from 'assert';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 /**
  * Function REDC is
@@ -41,7 +40,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 
 	// Reduce T mod R
 	const _Ti = Tj - k;
-	const _2k = k << 1;
+	const _2k = k << 1; // eslint-disable-line no-bitwise
 
 	const m = n_zeros(_2k);
 	const mj = _2k;

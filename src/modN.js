@@ -5,7 +5,7 @@ import {
 	_idivmod as n_idivmod,
 	_trim_positive as n_trim_positive,
 	_cmp_n as n_cmp_n,
-} from '@aureooms/js-integer-big-endian';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 import modR from './modR.js';
 

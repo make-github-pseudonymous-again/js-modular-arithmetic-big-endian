@@ -1,8 +1,7 @@
-import {_mul as n_mul} from '@aureooms/js-integer-big-endian';
+import assert from 'assert';
+import {_mul as n_mul} from '@arithmetic-operations-for/naturals-big-endian';
 
 import _redc from './_redc.js';
-
-import assert from 'assert';
 
 // TODO
 // mul by non montgomery ?

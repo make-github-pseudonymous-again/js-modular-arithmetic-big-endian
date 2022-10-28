@@ -2,7 +2,7 @@
 
 Import the library where needed
 ```js
-const { Montgomery } = require( '@aureooms/js-modular-arithmetic-big-endian' ) ;
+const { Montgomery } = require( '@arithmetic-operations-for/integers-modulo-n-big-endian' ) ;
 // or
-import { Montgomery } from '@aureooms/js-modular-arithmetic-big-endian' ;
+import { Montgomery } from '@arithmetic-operations-for/integers-modulo-n-big-endian' ;
 ```

@@ -1,16 +1,16 @@
 {
-  "name": "@aureooms/js-modular-arithmetic-big-endian",
+  "name": "@arithmetic-operations-for/integers-modulo-n-big-endian",
   "description": "Modular arithmetic for JavaScript",
   "version": "2.0.0",
   "license": "AGPL-3.0",
-  "author": "Aurélien Ooms <aurelien.ooms@gmail.com>",
-  "homepage": "https://make-github-pseudonymous-again.github.io/js-modular-arithmetic-big-endian",
+  "author": "make-github-pseudonymous-again",
+  "homepage": "https://arithmetic-operations-for.github.io/integers-modulo-n-big-endian",
   "repository": {
     "type": "git",
-    "url": "https://github.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian"
+    "url": "https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian"
   },
   "bugs": {
-    "url": "https://github.com/make-github-pseudonymous-again/js-modular-arithmetic-big-endian/issues"
+    "url": "https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian/issues"
   },
   "keywords": [
     "arithmetic",
@@ -56,35 +56,35 @@
     "travis": "npm run lint-config && npm run lint && npm run cover -- -- --tap | tap-dot"
   },
   "dependencies": {
-    "@aureooms/js-integer-big-endian": "^11.0.0"
+    "@arithmetic-operations-for/naturals-big-endian": "^12.0.0"
   },
   "devDependencies": {
-    "@aureooms/js-itertools": "5.0.2",
-    "@babel/core": "7.13.10",
-    "@babel/preset-env": "7.13.12",
-    "@babel/register": "7.13.8",
-    "@commitlint/cli": "12.0.1",
+    "@babel/core": "7.19.6",
+    "@babel/preset-env": "7.19.4",
+    "@babel/register": "7.18.9",
+    "@commitlint/cli": "17.1.2",
+    "@iterable-iterator/map": "1.0.1",
     "@js-library/commitlint-config": "0.0.4",
     "ava": "3.15.0",
     "babel-plugin-transform-remove-console": "6.9.4",
-    "babel-plugin-unassert": "3.0.1",
+    "babel-plugin-unassert": "3.2.0",
     "babel-preset-power-assert": "3.0.0",
-    "c8": "7.6.0",
-    "coveralls": "3.1.0",
+    "c8": "7.12.0",
+    "coveralls": "3.1.1",
     "esdoc": "1.1.0",
     "esdoc-ecmascript-proposal-plugin": "1.0.0",
     "esdoc-inject-script-plugin": "1.0.0",
     "esdoc-inject-style-plugin": "1.0.0",
     "esdoc-standard-plugin": "1.0.0",
     "fixpack": "4.0.0",
-    "husky": "5.2.0",
-    "lint-staged": "10.5.4",
-    "microbundle": "0.13.0",
-    "np": "7.4.0",
-    "pinst": "2.1.6",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "microbundle": "0.15.1",
+    "np": "7.6.2",
+    "pinst": "3.0.0",
     "power-assert": "1.6.1",
     "tap-dot": "2.0.0",
-    "xo": "0.38.2"
+    "xo": "0.52.4"
   },
   "ava": {
     "files": [
@@ -196,7 +196,8 @@
     ],
     "rules": {
       "camelcase": "off",
-      "unicorn/filename-case": "off"
+      "unicorn/filename-case": "off",
+      "unicorn/prefer-node-protocol": "off"
     },
     "overrides": [
       {

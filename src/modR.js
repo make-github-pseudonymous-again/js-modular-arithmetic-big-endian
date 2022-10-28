@@ -1,9 +1,8 @@
+import assert from 'assert';
 import {
 	_alloc as n_alloc,
 	_copy as n_copy,
-} from '@aureooms/js-integer-big-endian';
-
-import assert from 'assert';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 /**
  *

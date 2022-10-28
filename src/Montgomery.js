@@ -8,7 +8,7 @@ import {
 	_trim_positive as n_trim_positive,
 	_sub as n_sub,
 	convert as nconvert,
-} from '@aureooms/js-integer-big-endian';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 import _mul from './_mul.js';
 import _iadd from './_iadd.js';
@@ -168,8 +168,8 @@ export default class Montgomery {
 		const xbits = [];
 
 		do {
-			xbits.push(x & 1);
-			x >>= 1;
+			xbits.push(x & 1); // eslint-disable-line no-bitwise
+			x >>= 1; // eslint-disable-line no-bitwise
 		} while (x !== 1);
 
 		return this._powb(aRmodN, xbits, nonneg);

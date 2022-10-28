@@ -1,10 +1,9 @@
+import assert from 'assert';
 import {
 	_iadd as n_iadd,
 	_isub as n_isub,
 	_cmp as n_cmp,
-} from '@aureooms/js-integer-big-endian';
-
-import assert from 'assert';
+} from '@arithmetic-operations-for/naturals-big-endian';
 
 /**
  *
