@@ -30,8 +30,7 @@ str(y) ; // 51815386826945512755518685488363592823806772017922768894709047770322
 [![License](https://img.shields.io/github/license/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://raw.githubusercontent.com/arithmetic-operations-for/integers-modulo-n-big-endian/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/integers-modulo-n-big-endian)
 [![Build](https://img.shields.io/travis/arithmetic-operations-for/integers-modulo-n-big-endian/main.svg)](https://travis-ci.com/arithmetic-operations-for/integers-modulo-n-big-endian/branches)
-[![Dependencies](https://img.shields.io/david/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://david-dm.org/arithmetic-operations-for/integers-modulo-n-big-endian)
-[![Dev dependencies](https://img.shields.io/david/dev/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://david-dm.org/arithmetic-operations-for/integers-modulo-n-big-endian?type=dev)
+[![Dependencies](https://img.shields.io/librariesio/github/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian/network/dependencies)
 [![GitHub issues](https://img.shields.io/github/issues/arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian/issues)
 [![Downloads](https://img.shields.io/npm/dm/@arithmetic-operations-for/integers-modulo-n-big-endian.svg)](https://www.npmjs.org/package/@arithmetic-operations-for/integers-modulo-n-big-endian)
 
