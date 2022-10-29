@@ -18,7 +18,7 @@ domReady(() => {
 
 	const testlink = document.querySelector('header > a[data-ice="testLink"]');
 	testlink.href =
-		'https://coveralls.io/github/arithmetic-operations-for/integers-modulo-n-big-endian';
+		'https://app.codecov.io/gh/arithmetic-operations-for/integers-modulo-n-big-endian';
 	testlink.target = '_BLANK';
 
 	const searchBox = document.querySelector('.search-box');
