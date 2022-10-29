@@ -5,7 +5,7 @@ import {parse, stringify} from '@arithmetic-operations-for/naturals-big-endian';
 import iter from '../../fixtures/iter.js';
 import fmt from '../../fixtures/fmt.js';
 
-import {Montgomery} from '../../../src/index.js';
+import {Montgomery} from '#module';
 
 const compute = {
 	pow: (m, a, b, nonneg) => m.pow(a, b, nonneg),

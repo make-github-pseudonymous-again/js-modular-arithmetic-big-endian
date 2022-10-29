@@ -4,7 +4,7 @@ import {parse, stringify} from '@arithmetic-operations-for/naturals-big-endian';
 
 import iter from '../../fixtures/iter.js';
 
-import {Montgomery} from '../../../src/index.js';
+import {Montgomery} from '#module';
 
 const compute = {
 	mul: (m, a, b) => m.mul(a, b),

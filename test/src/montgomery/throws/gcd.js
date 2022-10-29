@@ -4,7 +4,7 @@ import {parse} from '@arithmetic-operations-for/naturals-big-endian';
 
 import iter from '../../../fixtures/iter.js';
 
-import {Montgomery} from '../../../../src/index.js';
+import {Montgomery} from '#module';
 
 function throws(t, b, D, N) {
 	const n = parse(D, b, N);
