@@ -10,7 +10,7 @@ const domReady = function (callback) {
 domReady(() => {
 	const projectname = document.createElement('a');
 	projectname.classList.add('project-name');
-	projectname.text = 'aureooms/js-modular-arithmetic-big-endian';
+	projectname.text = '@arithmetic-operations-for/integers-modulo-n-big-endian';
 	projectname.href = './index.html';
 
 	const header = document.querySelector('header');
@@ -18,7 +18,7 @@ domReady(() => {
 
 	const testlink = document.querySelector('header > a[data-ice="testLink"]');
 	testlink.href =
-		'https://coveralls.io/github/aureooms/js-modular-arithmetic-big-endian';
+		'https://app.codecov.io/gh/arithmetic-operations-for/integers-modulo-n-big-endian';
 	testlink.target = '_BLANK';
 
 	const searchBox = document.querySelector('.search-box');

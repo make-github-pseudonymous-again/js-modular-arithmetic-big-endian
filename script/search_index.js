@@ -1,50 +1,50 @@
 window.esdocSearchIndex = [
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/montgomery.js~montgomery",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/montgomery.js~montgomery",
     "class/src/Montgomery.js~Montgomery.html",
-    "<span>Montgomery</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/Montgomery.js</span>",
+    "<span>Montgomery</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/Montgomery.js</span>",
     "class"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/_iadd.js~_iadd",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/_iadd.js~_iadd",
     "function/index.html#static-function-_iadd",
-    "<span>_iadd</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/_iadd.js</span>",
+    "<span>_iadd</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/_iadd.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/_isub.js~_isub",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/_isub.js~_isub",
     "function/index.html#static-function-_isub",
-    "<span>_isub</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/_isub.js</span>",
+    "<span>_isub</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/_isub.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/_montgomery.js~_montgomery",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/_montgomery.js~_montgomery",
     "function/index.html#static-function-_montgomery",
-    "<span>_montgomery</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/_montgomery.js</span>",
+    "<span>_montgomery</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/_montgomery.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/_mul.js~_mul",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/_mul.js~_mul",
     "function/index.html#static-function-_mul",
-    "<span>_mul</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/_mul.js</span>",
+    "<span>_mul</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/_mul.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/_redc.js~_redc",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/_redc.js~_redc",
     "function/index.html#static-function-_redc",
-    "<span>_redc</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/_redc.js</span>",
+    "<span>_redc</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/_redc.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/modn.js~modn",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/modn.js~modn",
     "function/index.html#static-function-modN",
-    "<span>modN</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/modN.js</span>",
+    "<span>modN</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/modN.js</span>",
     "function"
   ],
   [
-    "@aureooms/js-modular-arithmetic-big-endian/src/modr.js~modr",
+    "@arithmetic-operations-for/integers-modulo-n-big-endian/src/modr.js~modr",
     "function/index.html#static-function-modR",
-    "<span>modR</span> <span class=\"search-result-import-path\">@aureooms/js-modular-arithmetic-big-endian/src/modR.js</span>",
+    "<span>modR</span> <span class=\"search-result-import-path\">@arithmetic-operations-for/integers-modulo-n-big-endian/src/modR.js</span>",
     "function"
   ],
   [

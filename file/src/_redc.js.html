@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/_redc.js | @aureooms/js-modular-arithmetic-big-endian</title>
+  <title data-ice="title">src/_redc.js | @arithmetic-operations-for/integers-modulo-n-big-endian</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-style.css"><script src="./inject/script/0-header.js"></script><meta name="description" content="Modular arithmetic for JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@aureooms/js-modular-arithmetic-big-endian"><meta property="twitter:description" content="Modular arithmetic for JavaScript"></head>
+<link rel="stylesheet" href="./inject/css/0-style.css"><script src="./inject/script/0-header.js"></script><meta name="description" content="Modular arithmetic for JavaScript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@arithmetic-operations-for/integers-modulo-n-big-endian"><meta property="twitter:description" content="Modular arithmetic for JavaScript"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a style="position:relative; top:3px;" href="https://github.com/aureooms/js-modular-arithmetic-big-endian"><img width="20px" src="./image/github.png"></a></header>
+<a style="position:relative; top:3px;" href="https://github.com/arithmetic-operations-for/integers-modulo-n-big-endian"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -42,7 +42,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/_redc.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import assert from &apos;assert&apos;;
+import {
 	_zeros as n_zeros,
 	_copy as n_copy,
 	_reset as n_reset,
@@ -50,9 +51,7 @@
 	_mul as n_mul,
 	_iadd as n_iadd,
 	_isub as n_isub,
-} from &apos;@aureooms/js-integer-big-endian&apos;;
-
-import assert from &apos;assert&apos;;
+} from &apos;@arithmetic-operations-for/naturals-big-endian&apos;;
 
 /**
  * Function REDC is
@@ -85,7 +84,7 @@ export default function _redc(b, k, N, Ni, Nj, M, Mi, Mj, T, Ti, Tj) {
 
 	// Reduce T mod R
 	const _Ti = Tj - k;
-	const _2k = k &lt;&lt; 1;
+	const _2k = k &lt;&lt; 1; // eslint-disable-line no-bitwise
 
 	const m = n_zeros(_2k);
 	const mj = _2k;
