@@ -101,11 +101,12 @@
     "files": [
       "test/src/**/*"
     ],
-    "timeout": "5m",
-    "concurrency": 4,
     "nodeArguments": [
       "--experimental-loader=@node-loader/core"
-    ]
+    ],
+    "require": [],
+    "timeout": "5m",
+    "concurrency": 4
   },
   "babel": {
     "sourceMaps": true,
