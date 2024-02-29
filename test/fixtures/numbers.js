@@ -1,5 +1,7 @@
 import path from 'path';
+
 import {map} from '@iterable-iterator/map';
+
 import lines from './lines.js';
 
 export default function numbers(filename) {

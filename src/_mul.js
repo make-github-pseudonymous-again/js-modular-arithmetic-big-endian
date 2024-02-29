@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import {_mul as n_mul} from '@arithmetic-operations-for/naturals-big-endian';
 
 import _redc from './_redc.js';

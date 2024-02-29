@@ -2,8 +2,8 @@ import test from 'ava';
 
 import {parse, stringify} from '@arithmetic-operations-for/naturals-big-endian';
 
-import iter from '../../../fixtures/iter.js';
 import fmt from '../../../fixtures/fmt.js';
+import iter from '../../../fixtures/iter.js';
 
 import {Montgomery} from '#module';
 

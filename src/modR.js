@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import {
 	_alloc as n_alloc,
 	_copy as n_copy,

@@ -1,4 +1,5 @@
 import assert from 'assert';
+
 import {
 	_alloc as n_alloc,
 	_zeros as n_zeros,
@@ -32,26 +33,8 @@ export default function _montgomery(b, N) {
 	const _R = n_zeros(_2kp1);
 	_R[k] = 1; // B^k
 
-	const [
-		GCD,
-		GCDi,
-		// eslint-disable-next-line no-unused-vars
-		_S,
-		// eslint-disable-next-line no-unused-vars
-		_Si,
-		_M,
-		// eslint-disable-next-line no-unused-vars
-		_1,
-		// eslint-disable-next-line no-unused-vars
-		_2,
-		// eslint-disable-next-line no-unused-vars
-		_3,
-		// eslint-disable-next-line no-unused-vars
-		_4,
-		// eslint-disable-next-line no-unused-vars
-		_5,
-		steps,
-	] = n_extended_euclidean_algorithm(b, _R, k, _2kp1, N, 0, k);
+	const [GCD, GCDi, _S, _Si, _M, _1, _2, _3, _4, _5, steps] =
+		n_extended_euclidean_algorithm(b, _R, k, _2kp1, N, 0, k);
 
 	// Assert that GCD(R,N) is 1.
 	if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)

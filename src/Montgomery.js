@@ -10,13 +10,13 @@ import {
 	convert as nconvert,
 } from '@arithmetic-operations-for/naturals-big-endian';
 
-import _mul from './_mul.js';
 import _iadd from './_iadd.js';
 import _isub from './_isub.js';
-import _redc from './_redc.js';
 import _montgomery from './_montgomery.js';
-import modR from './modR.js';
+import _mul from './_mul.js';
+import _redc from './_redc.js';
 import modN from './modN.js';
+import modR from './modR.js';
 
 export default class Montgomery {
 	constructor(b, N) {
@@ -92,34 +92,16 @@ export default class Montgomery {
 		// Compute (aR mod N)^-1 using Euclidean algo
 		const ai = n_trim_positive(aRmodN, 0, this.k);
 
-		let [
-			GCD,
-			GCDi,
-			// eslint-disable-next-line no-unused-vars
-			_S,
-			// eslint-disable-next-line no-unused-vars
-			_Si,
-			aRmodNi,
-			// eslint-disable-next-line no-unused-vars
-			_1,
-			// eslint-disable-next-line no-unused-vars
-			_2,
-			// eslint-disable-next-line no-unused-vars
-			_3,
-			// eslint-disable-next-line no-unused-vars
-			_4,
-			// eslint-disable-next-line no-unused-vars
-			_5,
-			steps,
-		] = n_extended_euclidean_algorithm(
-			this.b,
-			this.N,
-			0,
-			this.k,
-			aRmodN,
-			ai,
-			this.k,
-		);
+		let [GCD, GCDi, _S, _Si, aRmodNi, _1, _2, _3, _4, _5, steps] =
+			n_extended_euclidean_algorithm(
+				this.b,
+				this.N,
+				0,
+				this.k,
+				aRmodN,
+				ai,
+				this.k,
+			);
 
 		// Assert that GCD(N,aRmodN) is 1.
 		if (GCD.length - GCDi !== 1 || GCD[GCDi] !== 1)
@@ -201,7 +183,7 @@ export default class Montgomery {
 	pow(aRmodN, b, nonneg = true) {
 		if (njz(b, 0, b.length - 1)) {
 			// B consists of a single limb
-			return this.pown(aRmodN, nonneg ? b[b.length - 1] : -b[b.length - 1]);
+			return this.pown(aRmodN, nonneg ? b.at(-1) : -b.at(-1));
 		}
 
 		const xbits = nconvert(this.b, 2, b, 0, b.length);
